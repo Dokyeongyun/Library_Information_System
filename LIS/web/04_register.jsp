@@ -81,7 +81,7 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> 회원가입 Register </button>
                 </div>
-                <p class="text-center"> 이미 계정이 있으신가요? <a href="">로그인</a> </p>
+                <p class="text-center"> 이미 계정이 있으신가요? <a href="/login.do">로그인</a> </p>
             </form>
         </article>
     </div>

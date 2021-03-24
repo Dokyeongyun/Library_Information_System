@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>도서관정보시스템 LIS</title>
-    <link rel="stylesheet" href="css/header_footer.css?ver=2">
+    <link rel="stylesheet" href="css/header_footer.css?ver=3">
     <link rel="stylesheet" href="css/register.css?ver=1">
     <link rel="stylesheet" href="css/LIS.css?ver=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,19 +19,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
-<body>
-<header style="min-width: 1400px">
-    <nav>
-        <div class="menu-icon"><i class="fa fa-bars fa-2x"></i></div>
-        <div class="logo">LOGO</div>
-        <div class="menu">
-            <ul>
-                <li><a href="/login.do">Login</a></li>
-                <li><a href="/register.do">Register</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
 <script>
     $(document).ready(function() {
         $(".menu-icon").on("click", function() {$("nav ul").toggleClass("showing");});
@@ -38,7 +26,39 @@
 
     // Scrolling Effect
     $(window).on("scroll", function() {
-        if($(window).scrollTop()) {$('nav').addClass('black');}
-        else {$('nav').removeClass('black');}
+        if($(window).scrollTop()) {$('nav').addClass('black');
+            $('#nav_top').css('display','none');
+        }
+        else {
+            $('nav').removeClass('black');
+            $('#nav_top').css('display','block');
+        }
     })
 </script>
+<body style="padding-top: 100px;">
+<header style="min-width: 1400px; position: fixed; top: 0; z-index: 99999999">
+    <nav>
+        <div class="menu-icon"><i class="fa fa-bars fa-2x"></i></div>
+        <div class="logo">LOGO</div>
+        <div class="menu">
+            <div style="position: relative;margin: 0 auto;font-weight: 600;z-index: 30;">
+                <ul id="nav_top" style="line-height: 50px">
+                    <c:if test="${loginUser == null}">
+                        <li style="padding: 0 40px"><a href="/login.do">Login</a></li>
+                        <li style="padding: 0 40px"><a href="/register.do">Register</a></li>
+                    </c:if>
+                    <c:if test="${loginUser != null}">
+                        <li style="padding: 0 40px">${loginUser.name}님 </li>
+                        <li style="padding: 0 40px"><a href="/logout.do">Logout</a></li>
+                    </c:if>
+                </ul>
+                <ul id="nav_bottom" style="text-align: center;">
+                    <li><a href="#">Search</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">My Library</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
