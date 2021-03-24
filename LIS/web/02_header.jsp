@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>도서관정보시스템 LIS</title>
-    <link rel="stylesheet" href="css/header_footer.css?ver=1">
+    <link rel="stylesheet" href="css/header_footer.css?ver=2">
+    <link rel="stylesheet" href="css/register.css?ver=1">
+    <link rel="stylesheet" href="css/LIS.css?ver=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900">
@@ -23,8 +25,8 @@
         <div class="logo">LOGO</div>
         <div class="menu">
             <ul>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="/login.do">Login</a></li>
+                <li><a href="/register.do">Register</a></li>
             </ul>
         </div>
     </nav>

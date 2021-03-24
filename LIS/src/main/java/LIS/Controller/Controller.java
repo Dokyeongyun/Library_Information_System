@@ -1,6 +1,8 @@
 package LIS.Controller;
 
 import LIS.Command._00_Main;
+import LIS.Command._01_Register;
+import LIS.Command._02_Login;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +21,8 @@ public class Controller extends HttpServlet {
 
 	public void init() {
 		commandMap.put("/main.do", new _00_Main());
+		commandMap.put("/register.do", new _01_Register());
+		commandMap.put("/login.do", new _02_Login());
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
