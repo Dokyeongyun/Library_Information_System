@@ -6,7 +6,7 @@
             <p class="divider-text">
                 <span class="bg-light">Please Fill Input Boxes</span>
             </p>
-            <form>
+            <form action="/loginPro.do" method="post">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>

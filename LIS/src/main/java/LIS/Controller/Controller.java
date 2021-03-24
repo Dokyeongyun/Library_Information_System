@@ -1,8 +1,6 @@
 package LIS.Controller;
 
-import LIS.Command._00_Main;
-import LIS.Command._01_Register;
-import LIS.Command._02_Login;
+import LIS.Command.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,12 +15,14 @@ import java.util.Map;
 @WebServlet(urlPatterns = {"*.do"})
 public class Controller extends HttpServlet {
 
-	private Map<String, Object> commandMap = new HashMap<>();
+	private final Map<String, Object> commandMap = new HashMap<>();
 
 	public void init() {
 		commandMap.put("/main.do", new _00_Main());
 		commandMap.put("/register.do", new _01_Register());
-		commandMap.put("/login.do", new _02_Login());
+		commandMap.put("/registerPro.do", new _02_RegisterPro());
+		commandMap.put("/login.do", new _03_Login());
+		commandMap.put("/loginPro.do", new _04_LoginPro());
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

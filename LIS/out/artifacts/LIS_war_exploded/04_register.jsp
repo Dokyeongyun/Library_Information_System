@@ -3,7 +3,7 @@
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center" style="font-weight: bolder"> 회원가입 </h4>
-            <form>
+            <form action="/registerPro.do" method="post">
                 <p class="divider-text">
                     <span class="bg-light">Account Info</span>
                 </p>
@@ -45,7 +45,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                     </div>
-                    <select class="custom-select" style="max-width: 120px;">
+                    <select name="phone_pre" class="custom-select" style="max-width: 120px;">
                         <option selected="">010</option>
                         <option value="1">011</option>
                         <option value="2">016</option>
