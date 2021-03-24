@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>도서관정보시스템 LIS</title>
-    <link rel="stylesheet" href="css/header_footer.css?ver=3">
+    <link rel="stylesheet" href="css/header_footer.css?ver=2">
     <link rel="stylesheet" href="css/register.css?ver=1">
     <link rel="stylesheet" href="css/LIS.css?ver=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,20 +26,26 @@
 
     // Scrolling Effect
     $(window).on("scroll", function() {
-        if($(window).scrollTop()) {$('nav').addClass('black');
+        if($(window).scrollTop()) {
+            $('nav').addClass('black');
             $('#nav_top').css('display','none');
+            $('#nav_bottom').css('background','#42AEEC');
+            $('#logo1').css('display','none');
+            $('#logo2').css('display','inline');
         }
         else {
             $('nav').removeClass('black');
             $('#nav_top').css('display','block');
+            $('#nav_bottom').css('background','white');
+            $('#logo2').css('display','none');
+            $('#logo1').css('display','inline');
         }
     })
 </script>
 <body style="padding-top: 100px;">
 <header style="min-width: 1400px; position: fixed; top: 0; z-index: 99999999">
     <nav>
-        <div class="menu-icon"><i class="fa fa-bars fa-2x"></i></div>
-        <div class="logo">LOGO</div>
+
         <div class="menu">
             <div style="position: relative;margin: 0 auto;font-weight: 600;z-index: 30;">
                 <ul id="nav_top" style="line-height: 50px">
@@ -52,7 +58,17 @@
                         <li style="padding: 0 40px"><a href="/logout.do">Logout</a></li>
                     </c:if>
                 </ul>
-                <ul id="nav_bottom" style="text-align: center;">
+                <ul id="nav_bottom" style="text-align: center; background: white">
+                    <li id="logo1">
+                        <a href="/main.do">
+                            <img src="/img/LIS_logo.PNG" style="max-height: 92px; width: 250px">
+                        </a>
+                    </li>
+                    <li id="logo2" style="display: none">
+                        <a href="/main.do">
+                            <img src="/img/LIS_logo_blue.PNG" style="max-height: 92px; width: 250px;">
+                        </a>
+                    </li>
                     <li><a href="#">Search</a></li>
                     <li><a href="#">Services</a></li>
                     <li><a href="#">About</a></li>
