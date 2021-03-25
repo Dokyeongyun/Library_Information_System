@@ -11,7 +11,6 @@ public class UserDAO {
 
 	private static final UserDAO instance = new UserDAO();
 
-	// MngrDBBean객체를 리턴하는 메소드
 	public static UserDAO getInstance() {
 		return instance;
 	}
