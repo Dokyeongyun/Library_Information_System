@@ -21,8 +21,6 @@ public class _06_InsertBookPro implements CommandAction {
 		List<BookVO> list = bookDAO.getBookListFromExcel("");
 		int check = bookDAO.insertBooks(list);
 
-		System.out.println(check);
-
 		request.setAttribute("result", check);
 
 		return "/10_insertBookPro.jsp";

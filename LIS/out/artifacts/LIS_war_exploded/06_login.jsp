@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> 로그인 Login </button>
                 </div>
-                <p class="text-center"> 이미 계정이 있으신가요? <a href="">로그인</a> </p>
+                <p class="text-center"> 계정이 없으신가요? > <a href="/register.do">회원가입</a> </p>
             </form>
         </article>
     </div>

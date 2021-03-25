@@ -52,17 +52,24 @@
 <body style="padding-top: 100px;">
 <header style="min-width: 1400px; position: fixed; top: 0; z-index: 99999999">
     <nav>
-
         <div class="menu">
             <div style="position: relative;margin: 0 auto;font-weight: 600;z-index: 30;">
                 <ul id="nav_top" style="line-height: 50px">
                     <c:if test="${loginUser == null}">
-                        <li style="padding: 0 40px"><a href="/login.do">Login</a></li>
-                        <li style="padding: 0 40px"><a href="/register.do">Register</a></li>
+                        <li style="padding: 10px 40px">
+                            <a href="/login.do">
+                                <img src="/img/login_icon.PNG" style="width: 30px;">  Login
+                            </a>
+                        </li>
                     </c:if>
                     <c:if test="${loginUser != null}">
-                        <li style="padding: 0 40px">${loginUser.name}님 </li>
-                        <li style="padding: 0 40px"><a href="/logout.do">Logout</a></li>
+                        <li style="padding: 0 40px">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${loginUser.name}님</a>
+                            <ul class="dropdown-menu" style="text-align: center">
+                                <li style="display: block; padding: 10px;"><a href="/myInfo.do">My Info</a></li>
+                                <li style="display: block; padding: 10px;"><a href="/logout.do">Logout</a></li>
+                            </ul>
+                        </li>
                     </c:if>
                 </ul>
                 <ul id="nav_bottom" style="text-align: center; background: white">

@@ -25,6 +25,8 @@ public class Controller extends HttpServlet {
 		commandMap.put("/loginPro.do", new _04_LoginPro());
 		commandMap.put("/logout.do", new _05_Logout());
 		commandMap.put("/insertBookUsingExcel.do", new _06_InsertBookPro());
+		commandMap.put("/myInfo.do", new _07_MyInfo());
+		commandMap.put("/modifyUserInfo.do", new _08_ModifyUserInfo());
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -116,4 +116,23 @@ public class UserDAO {
 		}
 		return null;
 	}
+
+	// 회원정보 가져오기
+	public int modifyUser(UserVO user) {
+		int result = -1;
+		try {
+			conn = getConnection();
+			String sql = "UPDATE user SET email = ?, phone = ? WHERE userId = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getEmail());
+			pstmt.setString(2, user.getPhone());
+			pstmt.setString(3, user.getUserId());
+
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
