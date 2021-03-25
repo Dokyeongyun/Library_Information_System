@@ -1,1 +1,40 @@
+/* 폰트 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+body {font-family: "Nanum Gothic", sans-serif;}
+
 .container {padding: 92px 0;}
+/* 메인화면 이미지 슬라이드 */
+.slide-img-area{height: 400px;padding: 0 100px;background-color: #ebebeb;border-radius: 10px;margin-bottom: 40px;}
+.silde-img-div {height: 100%;width: 100%;}
+.silde-img-div img {height: 100%;width: 100%;}
+
+
+/* 메인화면 검색창 */
+.search_area {padding: 20px 0;margin-top: -30px;}
+.search_form {margin: 0 auto;width: 500px;}
+.search_box {width: 430px;height: 100%;padding: 0 22px 0 12px;font-size: 16px;color: #62696c;line-height: 2.7em;float: left;}
+
+
+/* 메인화면 컨텐츠 영역 */
+.content_area {width: 100%;height: fit-content;overflow: hidden;margin: 30px auto 0 auto;position: relative;font-family: "Nanum Gothic", sans-serif;}
+.content1, .content2, .content3 {display: inline-block;width: 33%;height: 100%;padding: 10px; float: left}
+.content_top {height: fit-content;font-size: 24px; border-bottom: 3px solid #086492; overflow: hidden}
+.content_top h2 {color: #1a1a1a;font-weight: 520;font-size: 20px; display: inline-block; padding: 10px}
+.content_top img{width: 40px; float:left; margin: 0 10px; display: inline-block}
+.content_bottom {height: fit-content;}
+
+/* 공지사항 리스트 + 일정 리스트*/
+.notice_list, .schedule_list {padding: 10px;  border: 1px solid #ddd;}
+.notice_list ul, .schedule_list ul {margin: 0;padding: 0;}
+.notice_list li, .schedule_list li {list-style: none;margin: 0;color: #000;line-height: 1.6;padding-top: 7px;padding-bottom: 7px;border-bottom: 1px solid #bfbfbf;}
+.notice_list li a, .schedule_list li a {font-size: 12px;display: block;color: inherit;}
+.notice_list li span, .schedule_list li span {font-size: 11px;float: none !important;display: block;color: #bfbfbf;}
+.schedule_list li span {background-color: #f2f2f2;color: #0074cc;padding: 3px 7px;margin-top: 2px;}
+
+/* 도서관 운영시간 표 */
+.open_time_table {padding: 10px;border: 1px solid #ddd;}
+.open_time_table table {width: 100%;font-size: 12px;}
+.open_time_table table tr {border: 1px solid #ddd;}
+.open_time_table th, .open_time_table td {padding: 5px 0 5px 7px;font-weight: lighter;}
+.open_time_table table .row_type1 {padding: 5px;background: #f2f2f2;font-weight: bolder;}
+.row_type1 th {font-weight: bolder;}

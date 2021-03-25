@@ -20,16 +20,95 @@
         </div>
     </div>
     <hr>
+    <div class="content_area">
+        <div class="content1">
+            <div class="content_top">
+                <img src="/img/notice_icon.PNG">
+                <h2>공지사항</h2>
+                <img src="/img/more_icon.PNG" style="float: right">
+            </div>
+            <div class="content_bottom">
+                <div class="notice_list">
+                    <ul>
+                        <li>
+                            <a href="#">[대학혁신지원사업]  2021  ‘Book드림 (독서 후기 공모)’ 안내</a>
+                            <span>March 19, 2021</span>
+                        </li>
+                        <li>
+                            <a href="#">Book똑똑!  책배달 서비스 안내</a>
+                            <span>March 19, 2021</span>
+                        </li>
+                        <li>
+                            <a href="#">일반열람실(3열람실) 개방 안내</a>
+                            <span>March 19, 2021</span>
+                        </li>
+                        <li>
+                            <a href="#">누리미디어 DBpia X 히든그레이스가 함께 진행하는 논문 쓰기와 검색 전략 이용자 교육</a>
+                            <span>March 17, 2021</span>
+                        </li>
+                        <li>
+                            <a href="#">IEEE Quiz Contest 안내 (3월19일 ~ 4월11일)</a>
+                            <span>March 16, 2021</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content2">
+            <div class="content_top">
+                <img src="/img/schdule_icon.PNG">
+                <h2>일정</h2>
+                <img src="/img/more_icon.PNG" style="float: right">
+            </div>
+            <div class="content_bottom">
+                <div class="schedule_list">
+                    <ul>
+                        <li>
+                            <a>RISS 100% 활용하고 대학과제 A+! 연구성과 A+!</a>
+                            <span>10:00 - 15:30 2021-03-26</span>
+                        </li>
+                        <li>
+                            <a>[Ebsco CINAHL 온라인 교육] 간호·보건학 학술 정보 탐색을 위한 5가지 특수 제한자의 개념 및 사용 방법</a>
+                            <span>14:00 - 14:40 2021-03-26</span>
+                        </li>
+                        <li>
+                            <a>EndNote 온라인 교육 : 논문 작성부터 투고까지 원스텝 관리하기</a>
+                            <span>14:00 - 15:30 2021-03-30</span>
+                        </li>
+                        <li>
+                            <a>[온라인 교육] Web of Science, JCR, Incites</a>
+                            <span>14:00 - 16:15 2021-03-31</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content3">
+            <div class="content_top">
+                <img src="/img/time_icon.PNG">
+                <h2>이용시간</h2>
+                <img src="/img/more_icon.PNG" style="float: right">
+            </div>
+            <div class="content_bottom">
+                <div class="open_time_table">
+                    <table>
+                        <tr class="row_type1"><th>DKY's Library Building 1</th><td></td></tr>
+                        <tr><th>주제정보실 Information Center (2F ~ 5F)</th><td>09:00 ~ 18:00</td></tr>
+                        <tr><th>라운지 Lounge (1F)</th><td>09:00 ~ 18:00</td></tr>
+                        <tr><th>일반열람실 General Reading Room (B1)</th><td>24h OPEN</td></tr>
+                        <tr><th>보존서고 Repository (B2)</th><td>Closed</td></tr>
+
+                        <tr class="row_type1"><th>DKY's Library Building 2</th><td></td></tr>
+                        <tr><th>의학정보실 Information Center</th><td>09:00 ~ 18:00</td></tr>
+                        <tr><th>병원도서관 Hospital Library</th><td>09:00 ~ 14:00</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<style>
-    .slide-img-area{height: 400px;padding: 0 100px;background-color: #ebebeb;border-radius: 10px;margin-bottom: 40px;}
-    .silde-img-div {height: 100%;width: 100%;}
-    .silde-img-div img {height: 100%;width: 100%;}
-    .search_area {padding: 20px 0;margin-top: -30px;}
-    .search_form {margin: 0 auto;width: 500px;}
-    .search_box {width: 430px;height: 100%;padding: 0 22px 0 12px;font-size: 16px;color: #62696c;line-height: 2.7em;float: left;}
-</style>
+<%-- 이미지 슬라이드 (Slick 라이브러리) --%>
 <script>
     $(function(){
         $('#slider-div').slick({
