@@ -1,6 +1,7 @@
 /* 폰트 */
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css");
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-body {font-family: "Nanum Gothic", sans-serif;}
+body  { font-family: 'NanumBarunGothic', sans-serif; }
 
 .container {padding: 92px 0;}
 /* 메인화면 이미지 슬라이드 */
@@ -38,3 +39,28 @@ body {font-family: "Nanum Gothic", sans-serif;}
 .open_time_table th, .open_time_table td {padding: 5px 0 5px 7px;font-weight: lighter;}
 .open_time_table table .row_type1 {padding: 5px;background: #f2f2f2;font-weight: bolder;}
 .row_type1 th {font-weight: bolder;}
+
+
+/* 게시판 공통 */
+.page_title_region {margin: 10px 20px;overflow: hidden;}
+.title_txt {padding: 10px;font-size: 34px;font-weight: bold;font-family: "NanumBarunGothic", sans-serif}
+.small_txt {padding: 10px;font-size: 14px;font-weight: lighter;margin-top: 10px;}
+.article_list_region {margin: 0 20px;border-bottom: 1px solid black;}
+.article_list_table {width: 100%;text-align-last: center;}
+.article_list_table thead tr {height: 60px;border-bottom: 2px solid #ddd;border-top: 2px solid #ddd;font-size: 14px;background: #e6e6e6;color: #727272;}
+.article_list_table tbody tr {height: 40px;border-bottom: 1px solid #ddd;}
+.article_list_table tbody tr td {padding: 14px 10px;font-size: 14px}
+.pagination_region {margin-top: 30px;width: 100%;text-align-last: center;background-color: #f9f9f8;padding: 16px 0 5px;}
+.article_search_region {padding: 16px 0 16px;border-top: 1px solid #ebebea;background-color: #f9f9f8;text-align: center;}
+.article_title_tr {text-align-last: left;}
+.article_title_tr a {font-size: 14px;color: black;font-weight: bold;}
+
+.bTM_wrapper {position: relative;overflow: hidden;height: 100%;max-width: 100%;outline: none;direction: ltr;}
+.bTM_horizontal .bTM_container {margin-left: 0 !important;margin-right: 0 !important;}
+ul.bTM_container, ol.bTM_container {list-style: none;}
+.bTM_container {margin: 0;padding: 0;overflow: hidden;}
+#boardTabMenu ul li {float: left;height: 39px;margin: 0;border-right: 1px solid #bdbdbd;border-top: 1px solid #bdbdbd;border-bottom: 1px solid #666;background-color: #e6e6e6;font-size: 16px;line-height: 2.6em;}
+#boardTabMenu ul li.selected a {color: #000;}
+#boardTabMenu ul li a {color: #666;display: block;padding: 0 50px;font-size: 14px;}
+#boardTabMenu ul li.selected {background-color: #fff;border: 1px solid #666;border-bottom: 1px solid #fff;font-weight: bold;}
+
