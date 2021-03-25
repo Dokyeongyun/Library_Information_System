@@ -8,16 +8,23 @@
     <title>도서관정보시스템 LIS</title>
     <link rel="stylesheet" href="css/header_footer.css?ver=2">
     <link rel="stylesheet" href="css/register.css?ver=1">
-    <link rel="stylesheet" href="css/LIS.css?ver=1">
+    <link rel="stylesheet" href="css/LIS.css?ver=2">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">
+
+    <%--image slide library - slick --%>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css?ver=1"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css?ver=1"/>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <%--image slide library - slick --%>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
 </head>
 <script>
     $(document).ready(function() {
