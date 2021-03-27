@@ -86,7 +86,7 @@
                     </li>
                     <li><a href="#">Search</a></li>
                     <li><a href="#">Services</a></li>
-                    <li><a href="/noticeMain.do">Board</a></li>
+                    <li><a href="/boardMain.do?boardId=1">Board</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">My Library</a></li>
                 </ul>

@@ -10,10 +10,16 @@
         <div id="boardTabMenu" style="position: relative; height: 50px;">
             <div class="bTM_wrapper bTM_horizontal">
                 <ul class="bTM_container">
-                    <li class="selected bTM_thumbContainer"><a href="#" title="공지사항">공지사항</a></li>
-                    <li class="bTM_thumbContainer"><a href="#" title="독서토론방">독서토론방</a></li>
-                    <li class="bTM_thumbContainer"><a href="#" title="Q&A">Q&A</a></li>
-                    <li class="bTM_thumbContainer"><a href="#" title="FAQ">FAQ</a></li>
+                    <c:set var="idx" value="1"/>
+                    <c:forEach var="i" items="${boardList}">
+                        <c:if test="${idx==boardId}">
+                            <li class="selected bTM_thumbContainer" value="${i.boardId}"><a href="#" title="${i.boardName}">${i.boardName}</a></li>
+                        </c:if>
+                        <c:if test="${idx!=boardId}">
+                            <li class="bTM_thumbContainer" value="${i.boardId}"><a href="#" title="${i.boardName}">${i.boardName}</a></li>
+                        </c:if>
+                        <c:set var="idx" value="${idx+1}"/>
+                    </c:forEach>
                 </ul>
             </div>
         </div>
@@ -32,30 +38,30 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td class="article_title_tr"><a href="#">신입생을 위한 도서관 견학 안내</a></td>
-                <td>아이디</td>
-                <td>등록시간</td>
-                <td>1</td>
-                <td>O</td>
-            </tr>
-            <%--            <c:forEach var="i" items="${allArticleList}">
+            <c:forEach var="i" items="${articleList}">
                 <tr>
-                    <td>게시판이름</td>
-                    <td><a href="/board/showArticle/${i.articleId}">${i.title}</a></td>
-                    <td>${i.nickName}</td>
-                    <td>${i.createTime}</td>
-                    <td>1</td>
+                    <td>${i.articleId}</td>
+                    <td class="article_title_tr"><a href="/showArticle.do?articleId=${i.articleId}">${i.title}</a></td>
+                    <td>${i.writer}</td>
+                    <td>${i.regDate}</td>
+                    <td>${i.hit}</td>
+                    <c:if test="${i.attachFile == ''}">
+                        <td>O</td>
+                    </c:if>
+                    <c:if test="${i.attachFile != ''}">
+                        <td>X</td>
+                    </c:if>
                 </tr>
-            </c:forEach>--%>
+            </c:forEach>
             </tbody>
         </table>
     </div>
     <div class="pagination_region">
-        <div style="overflow: hidden; width: fit-content; float: right">
-            <button class="btn writeBtn" onclick="location.href='/writeArticle.do'">
-                <img src="/img/pen__icon.PNG" style="width: 20px; margin-right: 4px;">글쓰기</button>
+        <div style="overflow: hidden;">
+            <button class="btn writeBtn" onclick="location.href='/writeArticle.do'" style="font-size: 14px;">
+                <img src="/img/pen__icon.PNG" style="width: 20px; margin-right: 4px;">
+                글쓰기
+            </button>
         </div>
         <ul class="pagination" style="width: fit-content; margin: 0 auto;">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -91,6 +97,10 @@
 </div>
 
 <script>
+    $(".bTM_thumbContainer").click(function(){
+        location.href='boardMain.do?boardId='+$(this).val();
+    });
+    <!-- 게시판검색 -->
     $("#searchArticleBtn").click(function () {
         if (!invalidate_check()) {
             return false;

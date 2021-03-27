@@ -27,7 +27,7 @@ public class Controller extends HttpServlet {
 		commandMap.put("/insertBookUsingExcel.do", new _06_InsertBookPro());
 		commandMap.put("/myInfo.do", new _07_MyInfo());
 		commandMap.put("/modifyUserInfo.do", new _08_ModifyUserInfo());
-		commandMap.put("/noticeMain.do", new _09_BoardMain());
+		commandMap.put("/boardMain.do", new _09_BoardMain());
 		commandMap.put("/writeArticle.do", new _10_WriteArticle());
 		commandMap.put("/writeArticlePro.do", new _11_WriteArticlePro());
 		commandMap.put("/showArticle.do", new _12_ShowArticle());

@@ -141,6 +141,36 @@ public class BoardDAO {
 		return article;
 	}
 
+	// 특정 게시판의 모든 글 불러오기
+	public List<ArticleVO> getAllArticles(int boardId) {
+		List<ArticleVO> list = new ArrayList<>();
+		try {
+			conn = getConnection();
+
+			String sql = "SELECT * FROM articleInfo WHERE boardId = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardId);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()){
+				ArticleVO article = new ArticleVO();
+				article.setArticleId(rs.getInt("articleId"));
+				article.setBoardId(rs.getInt("boardId"));
+				article.setBoardName(rs.getString("boardName"));
+				article.setWriter(rs.getString("writer"));
+				article.setTitle(rs.getString("title"));
+				article.setContent(rs.getString("content"));
+				article.setHit(rs.getInt("hit"));
+				article.setAttachFile(rs.getString("attachFile"));
+				article.setRegDate(rs.getString("regDate"));
+				list.add(article);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 	// 게시글의 댓글리스트 불러오기
 	public List<CommentVO> getComments(int articleId) {
 		List<CommentVO> list = new ArrayList<>();

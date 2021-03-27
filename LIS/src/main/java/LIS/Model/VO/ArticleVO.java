@@ -4,7 +4,6 @@ public class ArticleVO {
     private int articleId;
     private int boardId;
     private String boardName;
-
     private String writer;
     private String title;
     private String content;
