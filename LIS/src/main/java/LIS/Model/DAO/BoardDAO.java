@@ -3,6 +3,7 @@ package LIS.Model.DAO;
 import LIS.Model.VO.ArticleVO;
 import LIS.Model.VO.BoardVO;
 import LIS.Model.VO.BookVO;
+import LIS.Model.VO.CommentVO;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -138,5 +139,49 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		return article;
+	}
+
+	// 게시글의 댓글리스트 불러오기
+	public List<CommentVO> getComments(int articleId) {
+		List<CommentVO> list = new ArrayList<>();
+		try {
+			conn = getConnection();
+
+			String sql = "SELECT * FROM comment WHERE articleId = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, articleId);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()){
+				CommentVO comment = new CommentVO();
+				comment.setCommentId(rs.getInt("commentId"));
+				comment.setArticleId(rs.getInt("articleId"));
+				comment.setWriter(rs.getString("writer"));
+				comment.setContent(rs.getString("content"));
+				comment.setRegDate(rs.getString("regDate"));
+				list.add(comment);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	// 댓글 작성하기
+	public int writeComment(CommentVO comment) {
+		int check = -1;
+		try {
+			conn = getConnection();
+
+			String sql = "INSERT INTO comment(articleId, writer, content) VALUES (?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, comment.getArticleId());
+			pstmt.setString(2, comment.getWriter());
+			pstmt.setString(3, comment.getContent());
+			check = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return check;
 	}
 }

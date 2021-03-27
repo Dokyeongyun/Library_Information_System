@@ -26,15 +26,3 @@
         </form>
     </div>
 </div>
-
-<style>
-    .page_content_region {
-        padding: 20px;
-        border: 2px solid #62696c;
-        border-radius: 20px;
-    }
-    .input_box {
-        height: 40px;
-        margin-bottom: 10px;
-    }
-</style>

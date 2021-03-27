@@ -31,6 +31,7 @@ public class Controller extends HttpServlet {
 		commandMap.put("/writeArticle.do", new _10_WriteArticle());
 		commandMap.put("/writeArticlePro.do", new _11_WriteArticlePro());
 		commandMap.put("/showArticle.do", new _12_ShowArticle());
+		commandMap.put("/writeComment.do", new _13_WriteComment());
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

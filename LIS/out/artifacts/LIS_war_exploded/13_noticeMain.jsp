@@ -109,8 +109,3 @@
         return true;
     }
 </script>
-<style>
-    .writeBtn{
-        background-color: #c5c5c5; float: right; margin-right: 50px; font-size: 12px; font-weight: bold;
-    }
-</style>

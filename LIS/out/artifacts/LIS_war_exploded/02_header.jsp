@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/LIS.css?ver=1">
     <link rel="stylesheet" href="css/header_footer.css?ver=1">
     <link rel="stylesheet" href="css/register.css?ver=2">
+    <link rel="stylesheet" href="css/LIS_Board.css?ver=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900">

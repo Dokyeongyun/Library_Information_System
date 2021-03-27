@@ -4,6 +4,7 @@ import LIS.Controller.CommandAction;
 import LIS.Model.DAO.BoardDAO;
 import LIS.Model.VO.ArticleVO;
 import LIS.Model.VO.BoardVO;
+import LIS.Model.VO.CommentVO;
 import LIS.Model.VO.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,9 @@ public class _12_ShowArticle implements CommandAction {
 		int articleId = Integer.parseInt(request.getParameter("articleId"));
 
 		ArticleVO article = boardDAO.getArticle(articleId);
+		List<CommentVO> commentList = boardDAO.getComments(articleId);
 		request.setAttribute("article", article);
+		request.setAttribute("commentList", commentList);
 
 		return "/16_showArticle.jsp";
 	}

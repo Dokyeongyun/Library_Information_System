@@ -58,7 +58,15 @@
 
                 <!-- Comment List -->
                 <div class="article_comment_list_region">
-
+                    <c:forEach var="i" items="${commentList}">
+                        <div class="article_writer_info_region">
+                            <img src="/img/profile.PNG" class="profile_sm"/>
+                            <div class="article_writer_txt">${i.writer}</div>
+                            <div class="comment_content_txt">${i.content}</div>
+                            <div class="article_reg_time_txt">${i.regDate}</div>
+                            <div class="horizontal_gray"></div>
+                        </div>
+                    </c:forEach>
                 </div>
 
                 <!-- Comment Write Region -->
@@ -67,14 +75,39 @@
                         <c:if test="${sessionScope.get('loginUser')==null}">손님</c:if>
                         <c:if test="${sessionScope.get('loginUser')!=null}">${sessionScope.get("loginUser").userId}</c:if>
                     </div>
-                    <div class="article_comment_write_content">
-                        <textarea class="form-control noresize" rows="5" placeholder="댓글을 남겨보세요." id="commentContent" style="padding: 20px"></textarea>
-                    </div>
-                    <div class="article_comment_menu">
-                        <button type="button" class="btn button_right" id="writeCommentBtn">등록</button>
-                    </div>
+                    <form id="comment_form" action="/writeComment.do" method="post">
+                        <div class="article_comment_write_content">
+                            <textarea class="form-control noresize" rows="5" placeholder="댓글을 남겨보세요." name="content" id="content" style="padding: 20px"></textarea>
+                        </div>
+                        <div class="article_comment_menu">
+                            <input type="hidden" name="writer" value="${sessionScope.get("loginUser").userId}">
+                            <input type="hidden" name="articleId" value="${article.articleId}">
+                            <button type="button" class="btn button_right" id="writeCommentBtn" onclick="invalidate_check()">등록</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    <!-- 유효성 검사 및 로그인 검사 후 form 전송-->
+    function invalidate_check(){
+        // 댓글 내용 공백 확인
+        if($("#content").val() == ""){
+            alert("내용을 입력해주세요.");
+            $("#commentContent").focus();
+            return false;
+        }
+
+        if(${sessionScope.get("loginUser") == null}){
+            alert('로그인 후 이용해주세요.');
+            location.href='/login.do';
+            return false;
+        }
+
+        $("#comment_form").submit();
+        return true;
+    }
+</script>
