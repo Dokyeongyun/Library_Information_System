@@ -53,6 +53,10 @@
         </table>
     </div>
     <div class="pagination_region">
+        <div style="overflow: hidden; width: fit-content; float: right">
+            <button class="btn writeBtn" onclick="location.href='/writeArticle.do'">
+                <img src="/img/pen__icon.PNG" style="width: 20px; margin-right: 4px;">글쓰기</button>
+        </div>
         <ul class="pagination" style="width: fit-content; margin: 0 auto;">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -105,3 +109,8 @@
         return true;
     }
 </script>
+<style>
+    .writeBtn{
+        background-color: #c5c5c5; float: right; margin-right: 50px; font-size: 12px; font-weight: bold;
+    }
+</style>
