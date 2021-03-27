@@ -1,0 +1,23 @@
+/* 게시판 관련 */
+.writeBtn{background-color: #c5c5c5; float: right; margin-right: 50px; font-size: 12px; font-weight: bold;}
+.page_content_region {padding: 20px;border: 2px solid #62696c;border-radius: 20px;}
+.ArticleTool {position: absolute;right: 70px;bottom: 15px;font-size: 13px;line-height: 18px;}
+.article_info_region {border-bottom: 1px solid black;margin: 10px 20px;overflow: hidden;padding: 0 20px;}
+.article_info_header_region {padding: 20px;border-bottom: 1px solid #ddd;}
+.board_type_nav_txt {font-size: 16px;font-weight: bold;margin-bottom: 10px;}
+.article_title_txt {font-size: 30px;font-weight: bold;margin-bottom: 10px;}
+.article_writer_info_region {position: relative;padding: 10px 5px;min-height: 60px;height: fit-content;}
+.article_writer_txt {font-size: 16px;font-weight: bold;margin-bottom: 5px;}
+.comment_content_txt {font-size: 14px;margin-bottom: 5px;}
+.profile_sm {float: left;width: 4%;margin-right: 15px;}
+.article_reg_time_txt {font-size: 13px;color: #8f8f8f;margin-left: 40px;}
+.article_info_content_region {padding: 30px;border-bottom: 1px solid #ddd;}
+.article_content_txt {font-size: 16px;font-weight: 500;}
+.article_comment_region {padding: 20px;}
+.article_comment_header_region {padding: 20px 0;}
+.article_comment_header_txt {font-size: 20px;font-weight: bolder;}
+.horizontal_gray {padding: 5px;border-bottom: 1px solid #ddd;}
+.article_comment_write_region {border: 1px solid #ddd;padding: 20px;margin: 20px 0;min-height: 150px;}
+.article_comment_write_content {padding: 20px 0;font-size: 15px;}
+.noresize {resize: none; /* 사용자 임의 변경 불가 */ /*resize: both; !* 사용자 변경이 모두 가능 *!*/ /*resize: horizontal; !* 좌우만 가능 *!*/ /*resize: vertical; !* 상하만 가능 *!*/}
+.article_comment_menu {overflow: hidden;}

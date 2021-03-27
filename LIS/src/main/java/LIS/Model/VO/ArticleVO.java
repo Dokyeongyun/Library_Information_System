@@ -3,6 +3,8 @@ package LIS.Model.VO;
 public class ArticleVO {
     private int articleId;
     private int boardId;
+    private String boardName;
+
     private String writer;
     private String title;
     private String content;
@@ -14,6 +16,8 @@ public class ArticleVO {
     public void setArticleId(int articleId) { this.articleId = articleId; }
     public int getBoardId() { return boardId; }
     public void setBoardId(int boardId) { this.boardId = boardId; }
+    public String getBoardName() { return boardName; }
+    public void setBoardName(String boardName) { this.boardName = boardName; }
     public String getWriter() { return writer; }
     public void setWriter(String writer) { this.writer = writer; }
     public String getTitle() { return title; }

@@ -10,6 +10,6 @@
 
 <c:if test="${articleId > 0}">
     <script>
-        location.href='/showArticle?articleId=${articleId}';
+        location.href='/showArticle.do?articleId=${articleId}';
     </script>
 </c:if>

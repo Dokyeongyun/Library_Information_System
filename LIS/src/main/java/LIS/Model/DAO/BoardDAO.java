@@ -85,11 +85,13 @@ public class BoardDAO {
 			check = pstmt.executeUpdate();
 
 			if(check==1){ // 글쓰기 성공
-				String sql2 = "SELECT articleId FROM article WHERE writer=? AND title=?";
+				String sql2 = "SELECT articleId FROM article WHERE writer=? AND title=? AND content = ? AND boardId = ?";
 
 				pstmt = conn.prepareStatement(sql2);
 				pstmt.setString(1, article.getWriter());
 				pstmt.setString(2, article.getTitle());
+				pstmt.setString(3, article.getContent());
+				pstmt.setInt(4, article.getBoardId());
 				rs = pstmt.executeQuery();
 				if(rs.next()){
 					check = rs.getInt(1);
@@ -103,4 +105,38 @@ public class BoardDAO {
 		return check;
 	}
 
+	// 게시글 불러오기
+	public ArticleVO getArticle(int articleId) {
+		ArticleVO article = new ArticleVO();
+		try {
+			conn = getConnection();
+
+			// 조회수 + 1
+			String sql = "UPDATE article SET hit = hit+1 WHERE articleId = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, articleId);
+			pstmt.executeUpdate();
+
+			// 게시글 읽어오기
+			String sql2 = "SELECT * FROM articleInfo WHERE articleId = ?";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, articleId);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()){
+				article.setArticleId(rs.getInt("articleId"));
+				article.setBoardId(rs.getInt("boardId"));
+				article.setBoardName(rs.getString("boardName"));
+				article.setWriter(rs.getString("writer"));
+				article.setTitle(rs.getString("title"));
+				article.setContent(rs.getString("content"));
+				article.setHit(rs.getInt("hit"));
+				article.setAttachFile(rs.getString("attachFile"));
+				article.setRegDate(rs.getString("regDate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return article;
+	}
 }
