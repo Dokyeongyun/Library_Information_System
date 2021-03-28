@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="article_list_region">
-        <div class="small_txt">총 <span style="font-weight: 600">1</span> 건, <span style="font-weight: 600">1</span>/1페이지</div>
+        <div class="small_txt">총 <span style="font-weight: 600">${articleList.size()}</span> 건, <span style="font-weight: 600">1</span>/1페이지</div>
         <table class="article_list_table">
             <thead>
             <tr>

@@ -106,6 +106,41 @@ public class BoardDAO {
 		return check;
 	}
 
+	// 글 수정하기
+	public int modifyArticle(ArticleVO article) {
+		int check = -1;
+		try {
+			conn = getConnection();
+			String sql = "UPDATE article SET boardId = ?, title = ?, content = ? WHERE articleId = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,article.getBoardId());
+			pstmt.setString(2, article.getTitle());
+			pstmt.setString(3, article.getContent());
+			pstmt.setInt(4, article.getArticleId());
+			check = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
+
+	// 글 삭제하기
+	public int deleteArticle(ArticleVO article) {
+		int check = -1;
+		try {
+			conn = getConnection();
+			String sql = "DELETE FROM article WHERE articleId = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,article.getArticleId());
+			check = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
+
 	// 게시글 불러오기
 	public ArticleVO getArticle(int articleId) {
 		ArticleVO article = new ArticleVO();

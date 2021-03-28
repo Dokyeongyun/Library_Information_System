@@ -13,7 +13,7 @@
 
             <!-- Title & Writer Info & Menu -->
             <div class="article_info_header_region">
-                <div class="board_type_nav_txt"><a href="#">${article.boardName} ></a></div>
+                <div class="board_type_nav_txt"><a href="/boardMain.do?boardId=${article.boardId}">${article.boardName} ></a></div>
                 <div class="article_title_txt">${article.title}</div>
                 <div class="article_writer_info_region">
                     <img src="/img/profile.PNG" class="profile_sm"/>
@@ -29,8 +29,8 @@
                                     <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="font-size: 13px"  >메뉴</button>
                                     <ul class="dropdown-menu">
                                         <c:if test="${article.writer == sessionScope.get('loginUser').userId}">
-                                            <li><a class="dropdown-item" href="#">수정하기</a></li>
-                                            <li><a class="dropdown-item" href="#">삭제하기</a></li>
+                                            <li><a class="dropdown-item" href="/modifyArticle.do?articleId=${article.articleId}">수정하기</a></li>
+                                            <li><a class="dropdown-item" href="/deleteArticle.do?articleId=${article.articleId}">삭제하기</a></li>
                                         </c:if>
                                         <c:if test="${article.writer != sessionScope.get('loginUser').userId}">
                                             <li><a class="dropdown-item" href="#">스크랩하기</a></li>

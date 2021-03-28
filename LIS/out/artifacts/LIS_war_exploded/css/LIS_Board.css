@@ -21,3 +21,4 @@
 .article_comment_write_content {padding: 20px 0;font-size: 15px;}
 .noresize {resize: none; /* 사용자 임의 변경 불가 */ /*resize: both; !* 사용자 변경이 모두 가능 *!*/ /*resize: horizontal; !* 좌우만 가능 *!*/ /*resize: vertical; !* 상하만 가능 *!*/}
 .article_comment_menu {overflow: hidden;}
+.input_box{margin-bottom: 20px; height: 60px;}
