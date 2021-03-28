@@ -13,3 +13,4 @@
         location.href='/boardMain.do?boardId=${boardId}';
     </script>
 </c:if>
+<h1 ></h1>
