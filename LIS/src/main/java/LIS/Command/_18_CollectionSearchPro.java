@@ -2,11 +2,11 @@ package LIS.Command;
 
 import LIS.Controller.CommandAction;
 import LIS.Model.DAO.BookDAO;
-import LIS.Model.VO.BookSearchForm;
-import LIS.Model.VO.SearchFormPart;
+import LIS.Model.VO.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 
@@ -31,14 +31,28 @@ public class _18_CollectionSearchPro implements CommandAction {
 			list.add(part);
 		}
 
+		// BookSearchForm
 		BookSearchForm bookSearchForm = new BookSearchForm();
 		bookSearchForm.setSearchFormParts(list);
 		bookSearchForm.setStorageLocation(storageLocation);
 		bookSearchForm.setPublicationYear1(publicationYear1);
 		bookSearchForm.setPublicationYear2(publicationYear2);
 
+		// SearchHistoryVO
+		SearchHistoryVO sh = new SearchHistoryVO();
+		HttpSession session = request.getSession();
+		String userId = session.getId()+"_"+new Date().getTime();
+		if(session.getAttribute("loginUser") != null){
+			userId = ((UserVO) session.getAttribute("loginUser")).getUserId();
+		}
+		sh.setSh_user(userId);
+		sh.setSh_keyword(Arrays.toString(keyword));
+
+		List<BookVO> resultList = bookDAO.searchBook(bookSearchForm, sh);
+		request.setAttribute("resultList", resultList);
+
 		System.out.println(bookSearchForm);
-		System.out.println(bookDAO.searchBook(bookSearchForm));
+		System.out.println(resultList);
 		return "/21_collectionSearchResult.jsp";
 	}
 }

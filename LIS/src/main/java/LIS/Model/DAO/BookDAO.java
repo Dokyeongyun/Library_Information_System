@@ -1,9 +1,6 @@
 package LIS.Model.DAO;
 
-import LIS.Model.VO.BookSearchForm;
-import LIS.Model.VO.BookVO;
-import LIS.Model.VO.SearchFormPart;
-import LIS.Model.VO.UserVO;
+import LIS.Model.VO.*;
 import org.apache.poi.hssf.record.BookBoolRecord;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -162,8 +159,8 @@ public class BookDAO {
 		return books;
 	}
 
-	// 도서 검색
-	public List<BookVO> searchBook(BookSearchForm bookSearchForm) {
+	// 도서 검색 후 검색히스토리 추가
+	public List<BookVO> searchBook(BookSearchForm bookSearchForm, SearchHistoryVO sh) {
 		List<BookVO> list = new ArrayList<>();
 		try {
 			conn = getConnection();
@@ -171,8 +168,8 @@ public class BookDAO {
 			String middle = makeQuery1(bookSearchForm.getSearchFormParts());
 			String suffix = makeQuery2(bookSearchForm);
 
-			System.out.println(prefix+middle+suffix);
 			String sql = prefix+middle+suffix;
+			System.out.println(sql);
 
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -193,6 +190,15 @@ public class BookDAO {
 				book.setRegDate(rs.getString("regDate"));
 				list.add(book);
 			}
+
+			String sql2 = "INSERT INTO searchhistory(sh_keyword, sh_user, sh_query) VALUES (?, ?, ?)";
+
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, sh.getSh_keyword());
+			pstmt.setString(2, sh.getSh_user());
+			pstmt.setString(3, sql);
+
+			pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
