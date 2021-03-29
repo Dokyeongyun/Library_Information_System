@@ -25,7 +25,7 @@ nav ul li a {text-decoration: none;color: black;font-size: 16px; font-family: "N
 
 /* footer */
 html {position: relative;min-height: 100%;margin: 0;}
-body {min-height: 100%; font-family: 'Signika', sans-serif;}
+body {min-height: 100%;}
 #footer{position: relative;left: 0;bottom: 0;}
 .bg-grey {background: #292929;}
 .logo-footer {margin-bottom: 40px;}

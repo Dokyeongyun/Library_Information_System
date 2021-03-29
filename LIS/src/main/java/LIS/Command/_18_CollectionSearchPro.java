@@ -31,7 +31,12 @@ public class _18_CollectionSearchPro implements CommandAction {
 			list.add(part);
 		}
 
+
+
 		// BookSearchForm
+		if(publicationYear1.equals("")) publicationYear1 = "0";
+		if(publicationYear2.equals("")) publicationYear2 = "9999";
+
 		BookSearchForm bookSearchForm = new BookSearchForm();
 		bookSearchForm.setSearchFormParts(list);
 		bookSearchForm.setStorageLocation(storageLocation);
@@ -50,6 +55,9 @@ public class _18_CollectionSearchPro implements CommandAction {
 
 		List<BookVO> resultList = bookDAO.searchBook(bookSearchForm, sh);
 		request.setAttribute("resultList", resultList);
+
+		String searchInfo = bookSearchForm.toString();
+		request.setAttribute("searchInfo", searchInfo);
 
 		System.out.println(bookSearchForm);
 		System.out.println(resultList);

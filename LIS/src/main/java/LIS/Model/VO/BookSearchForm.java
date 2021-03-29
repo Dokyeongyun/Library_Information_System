@@ -19,6 +19,6 @@ public class BookSearchForm {
 
     @Override
     public String toString() {
-        return searchFormParts+" storageLocation: "+storageLocation+" || publicationYear: "+publicationYear1+" ~ "+publicationYear2+"\n";
+        return searchFormParts+" [소장처: "+storageLocation+"] [출판연도: "+publicationYear1+" ~ "+publicationYear2+"]\n";
     }
 }

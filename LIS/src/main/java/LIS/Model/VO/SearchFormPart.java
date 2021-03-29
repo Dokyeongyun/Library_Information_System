@@ -14,6 +14,14 @@ public class SearchFormPart {
 
     @Override
     public String toString() {
+        String type = "";
+        if(searchType.equals("bookName")) type = "서명";
+        if(searchType.equals("authors")) type = "저자";
+        if(searchType.equals("publisher")) type = "출판사";
+        return type+": "+keyword;
+    }
+
+    public String toString2() {
         return "type: "+searchType+" || keyword: "+keyword+" || operator: "+operator+"\n";
     }
 }
