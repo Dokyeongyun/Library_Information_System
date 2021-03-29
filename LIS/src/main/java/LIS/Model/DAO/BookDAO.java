@@ -220,9 +220,16 @@ public class BookDAO {
 
 	public String makeQuery2(BookSearchForm bookSearchForm){
 		StringBuilder query = new StringBuilder();
-		query.append(") AND storageLocation = '").append(bookSearchForm.getStorageLocation())
-				.append("' AND publicationYear >= ").append(bookSearchForm.getPublicationYear1())
-				.append(" AND publicationYear <= ").append(bookSearchForm.getPublicationYear2());
+		if(bookSearchForm.getStorageLocation().equals("")){
+			query.append(")")
+					.append("AND publicationYear >= ").append(bookSearchForm.getPublicationYear1())
+					.append(" AND publicationYear <= ").append(bookSearchForm.getPublicationYear2());
+		}else{
+			query.append(")")
+					.append(" AND storageLocation = '").append(bookSearchForm.getStorageLocation()).append("' ")
+					.append("AND publicationYear >= ").append(bookSearchForm.getPublicationYear1())
+					.append(" AND publicationYear <= ").append(bookSearchForm.getPublicationYear2());
+		}
 		return query.toString();
 	}
 }

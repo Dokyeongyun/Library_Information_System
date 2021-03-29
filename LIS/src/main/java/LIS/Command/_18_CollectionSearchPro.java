@@ -31,11 +31,10 @@ public class _18_CollectionSearchPro implements CommandAction {
 			list.add(part);
 		}
 
-
-
 		// BookSearchForm
-		if(publicationYear1.equals("")) publicationYear1 = "0";
-		if(publicationYear2.equals("")) publicationYear2 = "9999";
+		if(publicationYear1 == null || publicationYear1.equals("")) publicationYear1 = "0";
+		if(publicationYear2 == null || publicationYear2.equals("")) publicationYear2 = "9999";
+		if(storageLocation == null || storageLocation.equals("")) storageLocation = "";
 
 		BookSearchForm bookSearchForm = new BookSearchForm();
 		bookSearchForm.setSearchFormParts(list);

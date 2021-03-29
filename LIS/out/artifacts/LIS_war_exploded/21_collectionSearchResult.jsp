@@ -5,6 +5,7 @@
 <c:set var="resultPerPage" value="10"/>
 <c:set var="currentPage" value="1"/>
 <c:set var="maxPage" value="${resultListSize / resultPerPage}"/>
+<c:set var="firstIndex" value="${resultPerPage * (currentPage-1) + 1}"/>
 
 <div class="container">
     <div class="page_title_region">
@@ -38,6 +39,9 @@
                             <option value="publisher">출판사</option>
                             <option value="ISBN">ISBN</option>
                         </select>
+                        <input type="hidden" name="operator" value="AND">
+                        <input type="hidden" name="publicationYear1" value="0">
+                        <input type="hidden" name="publicationYear2" value="9999">
                         <input type="text" name="keyword" class="CSH_input_box" style="flex: auto" placeholder="검색 키워드를 입력해주세요.">
                         <input type="submit" class="CSH_input_box" style="background: #2F5597; color: white" value="검색"/>
                         <button type="button" class="CSH_input_box" style="background: white; color: #2F5597" onclick="location.href='/collectionSearch.do'">상세검색</button>
@@ -50,7 +54,8 @@
     <div class="CSH_result_region">
         <div style="height: 30px;">검색어: <strong>${searchInfo}</strong></div>
         <div style="height: 30px;">검색 결과: <strong>총 ${resultListSize} 건</strong></div>
-        <div style="height: 30px;">페이지: <strong>1 / ${maxPage} 페이지</strong></div>
+        <div style="height: 30px;" id="pageInfo"></div>
+        <div style="height: 30px;">페이지당 출력개수: <strong>${resultPerPage}</strong> 건</div>
         <hr>
 
         <div class="CSH_result_menu">
@@ -59,66 +64,65 @@
             <button type="button"><img src="/img/reservation_icon.PNG" style="width: 20px; margin-right: 4px;" alt="예약하기">예약하기</button>
         </div>
         <div class="CSH_result_list">
-            <ul>
-                <li id="">
-                    <dl>
-                        <dt class="title">선택</dt>
-                        <dd class="check"><input type="checkbox" title="선택"></dd>
+            <c:forEach var="book" items="${resultList}">
+                <ul>
+                    <li id="list${firstIndex}">
+                        <dl>
+                            <dt class="title">선택</dt>
+                            <dd class="check"><input type="checkbox" title="선택"></dd>
 
-                        <dt class="title">No</dt>
-                        <dd class="num">1.</dd>
+                            <dt class="title">No</dt>
+                            <dd class="num">${firstIndex}.</dd>
+                            <c:set var="firstIndex" value="${firstIndex+1}"/>
 
-                        <dt class="title">책이미지</dt>
-                        <dd class="book">
-                            <a href="#">
-                                <img id="#" src="/img/book_image_sample.PNG" width="100%" height="100%" alt="표지이미지">
-                            </a>
-                        </dd>
+                            <dt class="title">표지이미지</dt>
+                            <dd class="book">
+                                <a href="#">
+                                    <img id="#" src="/img/book_image_sample.PNG" width="100%" height="100%" alt="표지이미지">
+                                </a>
+                                <c:if test="${book.bookStatus == '이용가능'}">
+                                    <p class="bookStatus possible">${book.bookStatus}</p>
+                                </c:if>
+                                <c:if test="${book.bookStatus == '대출중'}">
+                                    <p class="bookStatus rented">${book.bookStatus}</p>
+                                </c:if>
+                                <c:if test="${book.bookStatus == '분실도서'}">
+                                    <p class="bookStatus impossible">${book.bookStatus}</p>
+                                </c:if>
+                            </dd>
 
-                        <dt class="title">서명</dt>
-                        <dd class="title">
-                            <a href="#">책 제목</a>
-                        </dd>
+                            <dt class="title">서명</dt>
+                            <dd class="title">
+                                <a href="#">${book.bookName}</a>
+                            </dd>
 
-                        <dt class="title">저자</dt>
-                        <dd class="info">저자: XXX</dd>
+                            <dt class="title">저자</dt>
+                            <dd class="info">저자: ${book.authors}</dd>
 
-                        <dt class="title">출판사</dt>
-                        <dd class="info">출판사: XXX</dd>
+                            <dt class="title">출판사</dt>
+                            <dd class="info">출판사: ${book.publisher}</dd>
 
-                        <dt class="title">출판연도</dt>
-                        <dd class="info">출판연도: 2021</dd>
+                            <dt class="title">출판연도</dt>
+                            <dd class="info">출판연도: ${book.publicationYear}</dd>
 
-                        <dt class="title">소장처</dt>
-                        <dd class="info">소장처: Building1</dd>
-                    </dl>
-                </li>
-            </ul>
+                            <dt class="title">권</dt>
+                            <c:if test="${book.vol == 0}">
+                                <dd class="info">권: -</dd>
+                            </c:if>
+                            <c:if test="${book.vol != 0}">
+                                <dd class="info">권: ${book.vol}</dd>
+                            </c:if>
+
+                            <dt class="title">소장처</dt>
+                            <dd class="info">소장처: ${book.storageLocation}</dd>
+                        </dl>
+                    </li>
+                </ul>
+            </c:forEach>
         </div>
-
     </div>
 </div>
-
-<style>
-    /* 도서 검색결과 메뉴 */
-    .CSH_result_region {padding: 20px;border: 1px solid #ddd;overflow: hidden;line-height: 2.3em;}
-    .CSH_result_menu {overflow: hidden;margin-bottom: 20px;}
-    .CSH_result_menu span input {margin-right: 7px;vertical-align: middle;}
-    .CSH_result_menu span {display: inline-block;height: 33px;margin-bottom: 5px;padding: 0 10px;border: 1px solid #ccc;color: #4c4c4c;font-size: 13px;}
-    .CSH_result_menu button {display: inline-block;height: 33px;margin-bottom: 5px;padding: 0 10px;border: 1px solid #ccc;color: #4c4c4c;font-size: 13px;}
-
-    /* 도서 검색결과 리스트 */
-    dl, dt, dd, ul {list-style: none;margin: 0;padding: 0;}
-    .CSH_result_list {}
-    .CSH_result_list a {font-size: 18px;color: black;font-family: "NanumBarunGothic", sans-serif;}
-    .CSH_result_list ul{width: 100%;margin-bottom: 30px;}
-    .CSH_result_list ul li{position: relative;overflow: hidden;margin-bottom: 10px;padding: 20px 30px;border: 1px solid #e8e8e8;}
-    .CSH_result_list ul li dl dt.title {display: none;}
-    .CSH_result_list ul li dl dd.check {float: left;display: inline-block;margin: 0 15px 0 0;}
-    .CSH_result_list ul li dl dd.num {position: relative;top: 3px;display: inline-block;color: #1a1a1a;font-size: 14px;float: left;margin-left: 0;}
-    .CSH_result_list ul li dl dd.book {float: left;margin: 0 15px 0 10px;}
-    .CSH_result_list ul .book {width: 150px;height: 200px;}
-    .CSH_result_list ul li dl dd.title {position: relative;left: 0;margin-right: 70px;overflow: hidden;font-size: 16px;color: #1a1a1a;line-height: 1.2; width: 60%; font-weight: bold; margin-bottom: 10px; padding-bottom: 15px; border-bottom: 2px solid #1a1a1a}
-    .CSH_result_list ul li dl dd {margin-bottom: 5px;margin-left: 170px; font-size: 14px;}
-    .CSH_result_list ul li dl dd.info {margin-bottom: 7px;color: #919191;}
-</style>
+<script>
+    var maxPage = Math.ceil(${resultListSize / resultPerPage});
+    $("#pageInfo").html('페이지: <strong>1 / '+maxPage+' 페이지</strong>')
+</script>

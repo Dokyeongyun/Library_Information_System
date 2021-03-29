@@ -10,3 +10,29 @@
 .limiter_menu a {height: 38px;display: inline-block;margin: 0 5px;padding: 0 19px;border: 1px solid #585858;color: #1a1a1a;font-size: 15px;font-weight: 600;line-height: 2.5em;vertical-align: top;}
 .limiter_menu input {height: 40px;margin: 0 5px;padding: 0 19px;border: 1px solid #585858;background: none;color: #1a1a1a;cursor: pointer;vertical-align: top;line-height: 1.0em;font-size: 15px;font-weight: 600;overflow: visible;}
 select {padding-left: 10px;font-family: "NanumBarunGothic", sans-serif;}
+
+/* 도서 검색결과 메뉴 */
+ .CSH_result_region {padding: 20px;border: 1px solid #ddd;overflow: hidden;line-height: 2.3em;}
+.CSH_result_menu {overflow: hidden;margin-bottom: 20px;}
+.CSH_result_menu span input {margin-right: 7px;vertical-align: middle;}
+.CSH_result_menu span {display: inline-block;height: 33px;margin-bottom: 5px;padding: 0 10px;border: 1px solid #ccc;color: #4c4c4c;font-size: 13px;}
+.CSH_result_menu button {display: inline-block;height: 33px;margin-bottom: 5px;padding: 0 10px;border: 1px solid #ccc;color: #4c4c4c;font-size: 13px;}
+
+/* 도서 검색결과 리스트 */
+dl, dt, dd, ul {list-style: none;margin: 0;padding: 0;}
+.CSH_result_list {}
+.CSH_result_list a {font-size: 18px;color: black;font-family: "NanumBarunGothic", sans-serif;}
+.CSH_result_list ul{width: 100%;margin-bottom: 30px;}
+.CSH_result_list ul li{position: relative;overflow: hidden;margin-bottom: 10px;padding: 20px 30px;border: 1px solid #e8e8e8;}
+.CSH_result_list ul li dl dt.title {display: none;}
+.CSH_result_list ul li dl dd.check {float: left;display: inline-block;margin: 0 15px 0 0;}
+.CSH_result_list ul li dl dd.num {position: relative;top: 3px;display: inline-block;color: #1a1a1a;font-size: 14px;float: left;margin-left: 0;}
+.CSH_result_list ul li dl dd.book {float: left;margin: 0 15px 0 10px;}
+.CSH_result_list ul .book {width: 180px;height: 250px;}
+.CSH_result_list ul li dl dd.title {position: relative;left: 0;margin-right: 70px;overflow: hidden;font-size: 16px;color: #1a1a1a;line-height: 1.2; width: 60%; font-weight: bold; margin-bottom: 10px; padding-bottom: 15px; border-bottom: 2px solid #1a1a1a}
+.CSH_result_list ul li dl dd {margin-bottom: 5px;margin-left: 170px; font-size: 14px;}
+.CSH_result_list ul li dl dd.info {margin-bottom: 7px;color: #919191; width: 55%;}
+.bookStatus{width: 100px;position: absolute;bottom: 20px;right: 200px;text-align: center;color: white;}
+.possible{background: #66a8ff;}
+.rented {background: #f084ff;}
+.impossible{background: red;}
