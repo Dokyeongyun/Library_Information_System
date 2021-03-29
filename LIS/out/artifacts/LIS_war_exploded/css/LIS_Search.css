@@ -1,0 +1,12 @@
+.page_navigation {margin-left: 20px; margin-bottom: 20px;}
+.page_navigation > a{font-size: 15px;font-weight: bold;font-family: "NanumBarunGothic", sans-serif;color: #8f8f8f;cursor: pointer;}
+.CSH_form_region {border: 1px solid #ddd;padding: 20px;}
+.CSH_keyword_region {overflow: hidden;}
+.CSH_menu_region > button {font-size: 20px; float: right; margin-left: 10px; width: 100px;}
+#limiter_table {width: 50%;font-size: 15px; font-family: "NanumBarunGothic", sans-serif}
+#limiter_table tr th {text-align: right; padding: 0 20px; width: 150px; height: 60px; font-weight: 500;}
+.CSH_input_box{width: 100px;height: 40px;border-radius: 0;border: 1px solid #585858; margin: 0 10px;}
+.limiter_menu {margin: 40px 0 0; text-align: center;}
+.limiter_menu a {height: 38px;display: inline-block;margin: 0 5px;padding: 0 19px;border: 1px solid #585858;color: #1a1a1a;font-size: 15px;font-weight: 600;line-height: 2.5em;vertical-align: top;}
+.limiter_menu input {height: 40px;margin: 0 5px;padding: 0 19px;border: 1px solid #585858;background: none;color: #1a1a1a;cursor: pointer;vertical-align: top;line-height: 1.0em;font-size: 15px;font-weight: 600;overflow: visible;}
+select {padding-left: 10px;font-family: "NanumBarunGothic", sans-serif;}

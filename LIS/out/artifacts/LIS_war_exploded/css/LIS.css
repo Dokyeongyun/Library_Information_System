@@ -3,7 +3,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 body  { font-family: 'NanumBarunGothic', sans-serif; }
 
-.container {padding: 92px 0;}
+.container {padding: 92px 0; font-family: "NanumBarunGothic", sans-serif}
 /* 메인화면 이미지 슬라이드 */
 .slide-img-area{height: 400px;padding: 0 100px;background-color: #ebebeb;border-radius: 10px;margin-bottom: 40px;}
 .silde-img-div {height: 100%;width: 100%;}

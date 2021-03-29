@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/header_footer.css?ver=2">
     <link rel="stylesheet" href="css/register.css?ver=2">
     <link rel="stylesheet" href="css/LIS_Board.css?ver=3">
+    <link rel="stylesheet" href="css/LIS_Search.css?ver=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900">
@@ -56,16 +57,18 @@
                     <li>
                         <a href="#">Search</a>
                         <ul class="nav-submenu">
-                            <li><a class="nav-submenu-item" href="#">1</a></li>
-                            <li><a class="nav-submenu-item" href="#">2</a></li>
-                            <li><a class="nav-submenu-item" href="#">3</a></li>
+                            <li><a class="nav-submenu-item" href="#">통합검색</a></li>
+                            <li><a class="nav-submenu-item" href="/collectionSearch.do">소장자료</a></li>
+                            <li><a class="nav-submenu-item" href="#">학위논문</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#">Collections</a>
                         <ul class="nav-submenu">
-                            <li><a class="nav-submenu-item" href="#">1</a></li>
-                            <li><a class="nav-submenu-item" href="#">2</a></li>
+                            <li><a class="nav-submenu-item" href="#">신착도서</a></li>
+                            <li><a class="nav-submenu-item" href="#">추천100선</a></li>
+                            <li><a class="nav-submenu-item" href="#">테마추천도서</a></li>
+                            <li><a class="nav-submenu-item" href="#">베스트대출</a></li>
                         </ul>
                     </li>
                     <li>
@@ -81,18 +84,19 @@
                     <li>
                         <a href="#">About</a>
                         <ul class="nav-submenu">
-                            <li><a class="nav-submenu-item" href="#">1</a></li>
-                            <li><a class="nav-submenu-item" href="#">2</a></li>
-                            <li><a class="nav-submenu-item" href="#">3</a></li>
+                            <li><a class="nav-submenu-item" href="#">도서관소개</a></li>
+                            <li><a class="nav-submenu-item" href="#">도서관통계</a></li>
+                            <li><a class="nav-submenu-item" href="#">HELP</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#">My Library</a>
                         <ul class="nav-submenu">
-                            <li><a class="nav-submenu-item" href="#">1</a></li>
-                            <li><a class="nav-submenu-item" href="#">2</a></li>
-                            <li><a class="nav-submenu-item" href="#">3</a></li>
-                            <li><a class="nav-submenu-item" href="#">4</a></li>
+                            <li><a class="nav-submenu-item" href="#">대출/예약/신청도서 관리</a></li>
+                            <li><a class="nav-submenu-item" href="#">희망도서 신청 및 조회</a></li>
+                            <li><a class="nav-submenu-item" href="#">독서이력 조회</a></li>
+                            <li><a class="nav-submenu-item" href="#">연체료 납부현황 조회</a></li>
+                            <li><a class="nav-submenu-item" href="#">즐겨찾는 도서</a></li>
                         </ul>
                     </li>
                 </ul>
