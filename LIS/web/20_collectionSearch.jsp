@@ -15,21 +15,21 @@
     </div>
 
     <!-- Collection Search Form Region -->
-    <form id="CSH_form">
+    <form id="CSH_form" action="/collectionSearchPro.do" method="get">
         <div class="CSH_form_region">
             <div class="CSH_keyword_region">
                 <div style="margin-bottom: 15px;"><strong>검색키워드 입력</strong></div>
                 <div id="keywordInputRegion">
                     <div class="form-group input-group" id="keywordForm1">
-                        <select name="search_type1" class="CSH_input_box">
-                            <option value="전체">전체</option>
-                            <option value="서명">서명</option>
-                            <option value="저자">저자</option>
-                            <option value="출판사">출판사</option>
+                        <select name="search_type" class="CSH_input_box">
+                            <option value="all">전체</option>
+                            <option value="bookName">서명</option>
+                            <option value="authors">저자</option>
+                            <option value="publisher">출판사</option>
                             <option value="ISBN">ISBN</option>
                         </select>
                         <input type="text" name="keyword" class="CSH_input_box" style="flex: auto" placeholder="검색 키워드를 입력해주세요.">
-                        <select name="operator1" class="CSH_input_box">
+                        <select name="operator" class="CSH_input_box">
                             <option selected value="AND">AND</option>
                             <option value="OR">OR</option>
                         </select>
@@ -48,7 +48,7 @@
                         <tr>
                             <th>소장처</th>
                             <td>
-                                <select id="storageLocation" class="CSH_input_box">
+                                <select name="storageLocation" class="CSH_input_box">
                                     <option value="Building1">Building1</option>
                                     <option value="Building2">Building2</option>
                                     <option value="Building3">Building3</option>
@@ -75,12 +75,7 @@
             </div>
         </div>
     </form>
-
 </div>
-
-<style>
-
-</style>
 
 <script>
     var keywordFormCount = 1;
@@ -93,15 +88,15 @@
         keywordFormCount++;
         var keywordForm =
             '<div class="form-group input-group" id="keywordForm'+keywordFormCount+'">'+
-            '<select name="search_type'+keywordFormCount+'" class="CSH_input_box">'+
-            '<option value="전체">전체</option>'+
-            '<option value="서명">서명</option>'+
-            '<option value="저자">저자</option>'+
-            '<option value="출판사">출판사</option>'+
+            '<select name="search_type" class="CSH_input_box">'+
+            '<option value="all">전체</option>'+
+            '<option value="bookName">서명</option>'+
+            '<option value="authors">저자</option>'+
+            '<option value="publisher">출판사</option>'+
             '<option value="ISBN">ISBN</option>'+
             '</select>'+
             '<input type="text" name="keyword" class="CSH_input_box" style="flex: auto" placeholder="검색 키워드를 입력해주세요.">'+
-            '<select name="operator'+keywordFormCount+'" class="CSH_input_box">'+
+            '<select name="operator" class="CSH_input_box">'+
             '<option selected value="AND">AND</option>'+
             '<option value="OR">OR</option>'+
             '</select>'+

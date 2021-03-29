@@ -1,7 +1,10 @@
 package LIS.Model.DAO;
 
+import LIS.Model.VO.BookSearchForm;
 import LIS.Model.VO.BookVO;
+import LIS.Model.VO.SearchFormPart;
 import LIS.Model.VO.UserVO;
+import org.apache.poi.hssf.record.BookBoolRecord;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -157,5 +160,60 @@ public class BookDAO {
 		}
 
 		return books;
+	}
+
+	// 도서 검색
+	public List<BookVO> searchBook(BookSearchForm bookSearchForm) {
+		List<BookVO> list = new ArrayList<>();
+		try {
+			conn = getConnection();
+			String prefix = "SELECT * FROM book WHERE (";
+			String middle = makeQuery1(bookSearchForm.getSearchFormParts());
+			String suffix = makeQuery2(bookSearchForm);
+
+			System.out.println(prefix+middle+suffix);
+			String sql = prefix+middle+suffix;
+
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				BookVO book = new BookVO();
+				book.setBookId(rs.getInt("bookId"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthors(rs.getString("authors"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublicationYear(rs.getInt("publicationYear"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setBookImageURL(rs.getString("bookImageURL"));
+				book.setVol(rs.getInt("vol"));
+				book.setCategory(rs.getString("category"));
+				book.setStorageLocation(rs.getString("storageLocation"));
+				book.setBookStatus(rs.getString("bookStatus"));
+				book.setRegDate(rs.getString("regDate"));
+				list.add(book);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public String makeQuery1(List<SearchFormPart> list){
+		StringBuilder query = new StringBuilder();
+		for(int i=0; i<list.size(); i++){
+			String searchType = list.get(i).getSearchType();
+			String keyword = list.get(i).getKeyword();
+			String operator = list.get(i).getOperator();
+			if(i==list.size()-1) operator = "";
+			query.append(searchType).append(" LIKE ").append("'%").append(keyword).append("%' ").append(operator).append(" ");
+		}
+		return query.toString();
+	}
+
+	public String makeQuery2(BookSearchForm bookSearchForm){
+		return ") AND storageLocation = '" + bookSearchForm.getStorageLocation() + "' AND publicationYear >= " +
+				bookSearchForm.getPublicationYear1() + " AND publicationYear <= " + bookSearchForm.getPublicationYear2();
 	}
 }
