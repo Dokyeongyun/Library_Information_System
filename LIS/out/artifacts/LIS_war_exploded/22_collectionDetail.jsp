@@ -128,11 +128,3 @@
         </div>
     </div>
 </div>
-<style>
-    .CSH_relatedLink{margin-bottom: 50px;}
-    .relatedLinkHeader {background: darkblue;}
-    .relatedLinkHeader h3 {font-weight: bold;color: #fff;font-size: 26px;padding: 10px 0 10px 20px;letter-spacing: -1px;}
-    .relatedLinkContent table {width: 100%;padding: 30px;border-top: 1px solid black;border-bottom: 1px solid black;}
-    .relatedLinkContent table td{padding: 10px;}
-    .relatedLinkContent table tr td a {font-size: 18px;font-weight: bold;color: #151757;}
-</style>

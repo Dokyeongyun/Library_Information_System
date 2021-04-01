@@ -49,7 +49,6 @@ public class BookDAO {
 	public int insertBooks(List<BookVO> list) {
 		int check = 0;
 		try {
-			conn = getConnection();
 			String sql = "INSERT INTO " +
 					"book(bookName, authors, publisher, publicationYear, ISBN, bookImageURL, vol, category, storageLocation) " +
 					"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -116,6 +115,59 @@ public class BookDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	// bookId를 이용해 도서정보 가져오기
+	public BookVO getBookUsingBookId(int bookId){
+		BookVO book = new BookVO();
+		try {
+			conn = getConnection();
+			String sql = "SELECT * FROM book WHERE bookId = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bookId);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()){
+				book.setBookId(rs.getInt("bookId"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthors(rs.getString("authors"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublicationYear(rs.getInt("publicationYear"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setBookImageURL(rs.getString("bookImageURL"));
+				book.setVol(rs.getInt("vol"));
+				book.setCategory(rs.getString("category"));
+				book.setStorageLocation(rs.getString("storageLocation"));
+				book.setBookStatus(rs.getString("bookStatus"));
+				book.setRegDate(rs.getString("regDate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return book;
+	}
+
+	// 도서상태 업데이트
+	public int updateBookStatus(int bookId, String status){
+		int check = -1;
+		try {
+			conn = getConnection();
+			conn.setAutoCommit(false);
+			String sql = "UPDATE book SET bookStatus = ? WHERE bookId = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, status);
+			pstmt.setInt(2, bookId);
+
+			check = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try{ conn.setAutoCommit(true); }catch (Exception e){ e.printStackTrace(); }
+		}
+		return check;
 	}
 
 	// Excel 파일에서 도서 정보 읽은 후 리턴
