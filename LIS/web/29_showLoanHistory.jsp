@@ -18,27 +18,32 @@
     </div>
     <div class="loanHistoryRegion">
         <div style=" overflow: hidden">
-            <div style="float: left">대출중인 도서가 총 <strong>4</strong> 권 있습니다.</div>
-            <button type="button" style="float: right; border: 1px solid black;padding: 5px 10px;background: darkblue;color: white;font-weight: bold;cursor: pointer;">내보내기</button>
+            <div style="float: left">독서이력이 총 <strong>${loanList.size()}</strong> 건 조회되었습니다.</div>
+            <button type="button" class="exportBtn" onclick="location.href='/exportLoanHistory.do'">
+                <img src="/img/excel_icon.PNG" style="width: 30px; margin-right: 5px;">내보내기</button>
         </div>
         <hr>
         <table class="loanHistoryTable">
             <tr>
-                <th>번호</th>
-                <th>ISBN</th>
-                <th>서명</th>
-                <th>저자</th>
-                <th>대출일</th>
-                <th>반납일</th>
+                <th width="5%">No.</th>
+                <th width="10%">ISBN</th>
+                <th width="40%">서명</th>
+                <th width="15%">저자</th>
+                <th width="15%">대출일</th>
+                <th width="15%">반납일</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>ISDFADSFKDF</td>
-                <td>스프링 철저 입문</td>
-                <td>주식회사 NTT 데이터 지음 / 신상재, 박윤미 옮김</td>
-                <td>2021-04-02</td>
-                <td>2021-04-02</td>
-            </tr>
+            <c:set var="index" value="1"/>
+            <c:forEach var="i" items="${loanList}">
+                <tr>
+                    <td>${index}</td>
+                    <td>${i.book.ISBN}</td>
+                    <td>${i.book.bookName}</td>
+                    <td>${i.book.authors}</td>
+                    <td>${i.loan.loanDate}</td>
+                    <td>${i.loan.returnDate}</td>
+                    <c:set var="index" value="${index+1}"/>
+                </tr>
+            </c:forEach>
         </table>
     </div>
 </div>

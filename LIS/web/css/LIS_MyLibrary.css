@@ -2,4 +2,5 @@
 .loanHistoryRegion {padding: 20px;}
 .loanHistoryTable {width: 100%;border-top: 1px solid black;border-bottom: 1px solid black;}
 .loanHistoryTable tr th {background: #e6e6e6;padding: 20px;text-align: center;}
-.loanHistoryTable tr td {text-align: center;padding: 20px;}
+.loanHistoryTable tr td {text-align: center;padding: 20px; border-top: 1px solid #ddd}
+.exportBtn {float: right; border: 1px solid black;padding: 5px 10px;background: darkblue;color: white;font-weight: bold;cursor: pointer;}

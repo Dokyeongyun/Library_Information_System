@@ -2,7 +2,9 @@ package LIS.Command;
 
 import LIS.Controller.CommandAction;
 import LIS.Model.DAO.LoanDAO;
+import LIS.Model.VO.LoanBook;
 import LIS.Model.VO.LoanVO;
+import LIS.Model.VO.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +27,10 @@ public class _26_ShowLoanHistory implements CommandAction {
 			return "/06_login.jsp";
 		}
 
+		UserVO user = (UserVO) session.getAttribute("loginUser");
+
+		List<LoanBook> loanList = loanDAO.getMyLoanHistory(user);
+		request.setAttribute("loanList", loanList);
 
 		return "/29_showLoanHistory.jsp";
 	}

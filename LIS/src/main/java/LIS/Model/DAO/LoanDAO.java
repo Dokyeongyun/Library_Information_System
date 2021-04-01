@@ -2,14 +2,16 @@ package LIS.Model.DAO;
 
 import LIS.Model.VO.*;
 import LIS.Utils.DatabaseConnection;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.*;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -154,6 +156,53 @@ public class LoanDAO {
 				l.setReturnDeadline(rs.getString("returnDeadline"));
 				l.setIsExtended(rs.getInt("isExtended"));
 				l.setIsReturn(rs.getInt("isReturn"));
+
+				b.setBookId(rs.getInt("bookId"));
+				b.setBookName(rs.getString("bookName"));
+				b.setAuthors(rs.getString("authors"));
+				b.setPublisher(rs.getString("publisher"));
+				b.setPublicationYear(rs.getInt("publicationYear"));
+				b.setISBN(rs.getString("ISBN"));
+				b.setBookImageURL(rs.getString("bookImageURL"));
+				b.setVol(rs.getInt("vol"));
+				b.setCategory(rs.getString("category"));
+				b.setStorageLocation(rs.getString("storageLocation"));
+				b.setBookStatus(rs.getString("bookStatus"));
+
+				lb.setBook(b);
+				lb.setLoan(l);
+				list.add(lb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	// 유저별 대출했던 도서정보 가져오기
+	public List<LoanBook> getMyLoanHistory(UserVO user) {
+		List<LoanBook> list = new ArrayList<>();
+		try {
+			String sql = "SELECT * FROM loan l NATURAL JOIN book b WHERE l.bookId = b.bookId AND loaner = ?;";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUserId());
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				LoanBook lb = new LoanBook();
+				LoanVO l = new LoanVO();
+				BookVO b = new BookVO();
+
+				l.setBookId(rs.getInt("bookId"));
+				l.setLoanId(rs.getInt("loanId"));
+				l.setLoaner(rs.getString("loaner"));
+				l.setLoanDate(rs.getString("loanDate"));
+				l.setReturnDeadline(rs.getString("returnDeadline"));
+				l.setIsExtended(rs.getInt("isExtended"));
+				l.setIsReturn(rs.getInt("isReturn"));
+				l.setReturnDate(rs.getString("returnDate"));
 
 				b.setBookId(rs.getInt("bookId"));
 				b.setBookName(rs.getString("bookName"));
