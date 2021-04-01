@@ -60,10 +60,57 @@ public class LoanDAO {
 				throw new Exception("대출처리 실패");
 			}
 		} catch (Exception e) {
+			try{ conn.rollback(); }catch (Exception ignored){ }
 			e.printStackTrace();
 		} finally {
 			try { conn.setAutoCommit(true); } catch (Exception e2) { e2.printStackTrace(); }
 		}
 		return check;
+	}
+
+	// 유저별 대출중인 도서정보 가져오기
+	public List<LoanBook> getMyLoanBook(UserVO user) {
+		List<LoanBook> list = new ArrayList<>();
+		try {
+			String sql = "SELECT * FROM loan l NATURAL JOIN book b WHERE l.bookId = b.bookId AND isReturn = 0 AND loaner = ?;";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUserId());
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				LoanBook lb = new LoanBook();
+				LoanVO l = new LoanVO();
+				BookVO b = new BookVO();
+
+				l.setBookId(rs.getInt("bookId"));
+				l.setLoanId(rs.getInt("loanId"));
+				l.setLoaner(rs.getString("loaner"));
+				l.setLoanDate(rs.getString("loanDate"));
+				l.setReturnDeadline(rs.getString("returnDeadline"));
+				l.setIsExtended(rs.getInt("isExtended"));
+				l.setIsReturn(rs.getInt("isReturn"));
+
+				b.setBookId(rs.getInt("bookId"));
+				b.setBookName(rs.getString("bookName"));
+				b.setAuthors(rs.getString("authors"));
+				b.setPublisher(rs.getString("publisher"));
+				b.setPublicationYear(rs.getInt("publicationYear"));
+				b.setISBN(rs.getString("ISBN"));
+				b.setBookImageURL(rs.getString("bookImageURL"));
+				b.setVol(rs.getInt("vol"));
+				b.setCategory(rs.getString("category"));
+				b.setStorageLocation(rs.getString("storageLocation"));
+				b.setBookStatus(rs.getString("bookStatus"));
+
+				lb.setBook(b);
+				lb.setLoan(l);
+				list.add(lb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

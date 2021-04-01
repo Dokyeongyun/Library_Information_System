@@ -148,8 +148,6 @@ public class BookDAO {
 			check = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try{ conn.setAutoCommit(true); }catch (Exception e){ e.printStackTrace(); }
 		}
 		return check;
 	}

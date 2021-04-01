@@ -25,4 +25,5 @@ public class LoanVO {
     public int getIsReturn() { return isReturn; }
     public void setIsReturn(int isReturn) { this.isReturn = isReturn; }
     public String getReturnDate() { return returnDate; }
-    public void setReturnDate(String returnDate) { this.returnDate = returnDate; }}
+    public void setReturnDate(String returnDate) { this.returnDate = returnDate; }
+}

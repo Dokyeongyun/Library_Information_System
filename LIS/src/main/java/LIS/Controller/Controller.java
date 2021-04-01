@@ -40,6 +40,7 @@ public class Controller extends HttpServlet {
 		commandMap.put("/collectionDetail.do", new _19_CollectionDetail());
 		commandMap.put("/loanBookForm.do", new _20_loanBook());
 		commandMap.put("/loanBookPro.do", new _21_LoanBookPro());
+		commandMap.put("/manageMyLoanInfo.do", new _22_ManageLoanInfo());
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
