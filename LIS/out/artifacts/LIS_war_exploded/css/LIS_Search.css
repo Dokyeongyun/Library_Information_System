@@ -12,7 +12,7 @@
 select {padding-left: 10px;font-family: "NanumBarunGothic", sans-serif;}
 
 /* 도서 검색결과 메뉴 */
- .CSH_result_region {padding: 20px;border: 1px solid #ddd;overflow: hidden;line-height: 2.3em;}
+.CSH_result_region {padding: 20px;border: 1px solid #ddd;overflow: hidden;line-height: 2.3em; margin-bottom: 20px;}
 .CSH_result_menu {overflow: hidden;margin-bottom: 20px;}
 .CSH_result_menu span input {margin-right: 7px;vertical-align: middle;}
 .CSH_result_menu span {display: inline-block;height: 33px;margin-bottom: 5px;padding: 0 10px;border: 1px solid #ccc;color: #4c4c4c;font-size: 13px;}
@@ -36,3 +36,19 @@ dl, dt, dd, ul {list-style: none;margin: 0;padding: 0;}
 .possible{background: #66a8ff;}
 .rented {background: #f084ff;}
 .impossible{background: red;}
+
+/* 도서 상세정보 화면 */
+ .CSH_detail_region {padding: 20px; overflow: hidden;line-height: 2.3em;}
+.CSH_profile {padding: 40px; border: 1px solid #ddd; margin-bottom: 30px;}
+.profileHeader h3 {margin-bottom: 5px;font-size: 28px;color: #003777;line-height: 1.2;font-weight: bold;}
+.profileHeader p {font-size: 20px;color: #737373;}
+.profileContent {overflow: hidden;text-align: center;}
+.leftContent {float: left;width: 25%;height: 300px;padding: 20px;}
+.rightContent {float: left;width: 75%;padding: 30px;}
+.rightContent table th {text-align: right; padding: 10px;}
+.CSH_storageInfo{margin-bottom: 30px;}
+.storageInfoHeader {background: darkblue;}
+.storageInfoHeader h3 {font-weight: bold;color: #fff;font-size: 26px;padding: 10px 0 10px 20px;letter-spacing: -1px;}
+.storageInfoContent table{padding: 20px;width: 100%;border-top: 1px solid black;border-bottom: 1px solid black;}
+.storageInfoContent table th{padding: 10px;text-align: center;background: #e6e6e6;}
+.storageInfoContent table td{padding: 10px;text-align: center;}

@@ -77,8 +77,8 @@
 
                             <dt class="title">표지이미지</dt>
                             <dd class="book">
-                                <a href="#">
-                                    <img id="#" src="/img/book_image_sample.PNG" width="100%" height="100%" alt="표지이미지">
+                                <a href="/collectionDetail.do?ISBN=${book.ISBN}">
+                                    <img src="/img/book_image_sample.PNG" width="100%" height="100%" alt="표지이미지">
                                 </a>
                                 <c:if test="${book.bookStatus == '이용가능'}">
                                     <p class="bookStatus possible">${book.bookStatus}</p>
@@ -93,7 +93,7 @@
 
                             <dt class="title">서명</dt>
                             <dd class="title">
-                                <a href="#">${book.bookName}</a>
+                                <a href="/collectionDetail.do?ISBN=${book.ISBN}">${book.bookName}</a>
                             </dd>
 
                             <dt class="title">저자</dt>

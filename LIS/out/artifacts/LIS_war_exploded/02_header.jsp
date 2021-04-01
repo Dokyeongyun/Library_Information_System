@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/header_footer.css?ver=3">
     <link rel="stylesheet" href="css/register.css?ver=2">
     <link rel="stylesheet" href="css/LIS_Board.css?ver=3">
-    <link rel="stylesheet" href="css/LIS_Search.css?ver=2">
+    <link rel="stylesheet" href="css/LIS_Search.css?ver=4">
 <%--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900">--%>
 <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--%>
 <%--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">--%>
