@@ -1,0 +1,5 @@
+/* 독서이력 조회 */
+.loanHistoryRegion {padding: 20px;}
+.loanHistoryTable {width: 100%;border-top: 1px solid black;border-bottom: 1px solid black;}
+.loanHistoryTable tr th {background: #e6e6e6;padding: 20px;text-align: center;}
+.loanHistoryTable tr td {text-align: center;padding: 20px;}

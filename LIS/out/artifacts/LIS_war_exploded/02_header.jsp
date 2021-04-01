@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/register.css?ver=2">
     <link rel="stylesheet" href="css/LIS_Board.css?ver=3">
     <link rel="stylesheet" href="css/LIS_Search.css?ver=3">
+    <link rel="stylesheet" href="css/LIS_MyLibrary.css?ver=1">
 <%--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900">--%>
 <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--%>
 <%--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">--%>
@@ -93,7 +94,7 @@
                         <ul class="nav-submenu">
                             <li><a class="nav-submenu-item" href="/manageMyLoanInfo.do">대출/예약/신청도서 관리</a></li>
                             <li><a class="nav-submenu-item" href="#">희망도서 신청 및 조회</a></li>
-                            <li><a class="nav-submenu-item" href="#">독서이력 조회</a></li>
+                            <li><a class="nav-submenu-item" href="/showLoanHistory.do">독서이력 조회</a></li>
                             <li><a class="nav-submenu-item" href="#">연체료 납부현황 조회</a></li>
                             <li><a class="nav-submenu-item" href="#">즐겨찾는 도서</a></li>
                         </ul>
