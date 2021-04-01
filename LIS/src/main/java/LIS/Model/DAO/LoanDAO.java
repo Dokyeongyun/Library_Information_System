@@ -1,6 +1,7 @@
 package LIS.Model.DAO;
 
 import LIS.Model.VO.*;
+import LIS.Utils.DatabaseConnection;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -26,29 +27,14 @@ public class LoanDAO {
 
 	private LoanDAO() { }
 
-	Connection conn = null;
+	Connection conn = DatabaseConnection.getInstance().conn;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-
-	private Connection getConnection() {
-		String dbURL = "jdbc:mysql://localhost:3306/LIS?serverTimezone=UTC";
-		String dbID = "root";
-		String dbPassword = "1234";
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(dbURL,dbID,dbPassword);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return conn;
-	}
 
 	// 도서 대출 (도서 상태 변경 + 대출 작업 수행 트랜잭션처리)
 	public int insertLoan(LoanVO loan) {
 		int check = -1;
 		try {
-			conn = getConnection();
 			conn.setAutoCommit(false);
 
 			int updateStatus = BookDAO.getInstance().updateBookStatus(loan.getBookId(), "대출중");

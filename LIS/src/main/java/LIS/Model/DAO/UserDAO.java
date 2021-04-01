@@ -1,6 +1,7 @@
 package LIS.Model.DAO;
 
 import LIS.Model.VO.UserVO;
+import LIS.Utils.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,29 +18,14 @@ public class UserDAO {
 
 	private UserDAO() { }
 
-	Connection conn = null;
+	Connection conn = DatabaseConnection.getInstance().conn;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-
-	private Connection getConnection() {
-		String dbURL = "jdbc:mysql://localhost:3306/LIS?serverTimezone=UTC";
-		String dbID = "root";
-		String dbPassword = "1234";
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(dbURL,dbID,dbPassword);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return conn;
-	}
 
 	// 회원가입
 	public int register(UserVO user) {
 		int check = -1;
 		try {
-			conn = getConnection();
 			String sql = "INSERT INTO user(userId, password, name, stuNum, dept, phone, email) " +
 					"VALUES(?, ?, ?, ?, ?, ?, ?)";
 
@@ -65,7 +51,6 @@ public class UserDAO {
 	public int login(UserVO user) {
 		int check = -1;
 		try {
-			conn = getConnection();
 			String sql = "SELECT COUNT(*) FROM user WHERE userId=? AND password=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -88,7 +73,6 @@ public class UserDAO {
 	// 회원정보 가져오기
 	public UserVO getUser(UserVO user) {
 		try {
-			conn = getConnection();
 			String sql = "SELECT * FROM user WHERE userId=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -121,7 +105,6 @@ public class UserDAO {
 	public int modifyUser(UserVO user) {
 		int result = -1;
 		try {
-			conn = getConnection();
 			String sql = "UPDATE user SET email = ?, phone = ? WHERE userId = ?";
 
 			pstmt = conn.prepareStatement(sql);

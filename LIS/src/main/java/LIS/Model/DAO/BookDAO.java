@@ -1,6 +1,7 @@
 package LIS.Model.DAO;
 
 import LIS.Model.VO.*;
+import LIS.Utils.DatabaseConnection;
 import org.apache.poi.hssf.record.BookBoolRecord;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -27,23 +28,9 @@ public class BookDAO {
 
 	private BookDAO() { }
 
-	Connection conn = null;
+	Connection conn = DatabaseConnection.getInstance().conn;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-
-	private Connection getConnection() {
-		String dbURL = "jdbc:mysql://localhost:3306/LIS?serverTimezone=UTC";
-		String dbID = "root";
-		String dbPassword = "1234";
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(dbURL,dbID,dbPassword);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return conn;
-	}
 
 	// 도서정보 추가
 	public int insertBooks(List<BookVO> list) {
@@ -87,7 +74,6 @@ public class BookDAO {
 	public List<BookVO> getBooksUsingISBN(String ISBN){
 		List<BookVO> list = new ArrayList<>();
 		try {
-			conn = getConnection();
 			String sql = "SELECT * FROM book WHERE ISBN = ?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -121,7 +107,6 @@ public class BookDAO {
 	public BookVO getBookUsingBookId(int bookId){
 		BookVO book = new BookVO();
 		try {
-			conn = getConnection();
 			String sql = "SELECT * FROM book WHERE bookId = ?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -153,7 +138,6 @@ public class BookDAO {
 	public int updateBookStatus(int bookId, String status){
 		int check = -1;
 		try {
-			conn = getConnection();
 			conn.setAutoCommit(false);
 			String sql = "UPDATE book SET bookStatus = ? WHERE bookId = ?";
 
@@ -249,7 +233,6 @@ public class BookDAO {
 	public List<BookVO> searchBook(BookSearchForm bookSearchForm, SearchHistoryVO sh) {
 		List<BookVO> list = new ArrayList<>();
 		try {
-			conn = getConnection();
 			String prefix = "SELECT * FROM book WHERE (";
 			String middle = makeQuery1(bookSearchForm.getSearchFormParts());
 			String suffix = makeQuery2(bookSearchForm);

@@ -4,6 +4,7 @@ import LIS.Model.VO.ArticleVO;
 import LIS.Model.VO.BoardVO;
 import LIS.Model.VO.BookVO;
 import LIS.Model.VO.CommentVO;
+import LIS.Utils.DatabaseConnection;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -29,29 +30,14 @@ public class BoardDAO {
 
 	private BoardDAO() { }
 
-	Connection conn = null;
+	Connection conn = DatabaseConnection.getInstance().conn;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-
-	private Connection getConnection() {
-		String dbURL = "jdbc:mysql://localhost:3306/LIS?serverTimezone=UTC";
-		String dbID = "root";
-		String dbPassword = "1234";
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(dbURL,dbID,dbPassword);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return conn;
-	}
 
 	// 게시판 종류 불러오기
 	public List<BoardVO> getBoardTypes() {
 		List<BoardVO> list = new ArrayList<>();
 		try {
-			conn = getConnection();
 			String sql = "SELECT * FROM board";
 
 			pstmt = conn.prepareStatement(sql);
@@ -76,7 +62,6 @@ public class BoardDAO {
 	public int writeArticle(ArticleVO article) {
 		int check = -1;
 		try {
-			conn = getConnection();
 			String sql = "INSERT INTO article(boardId, writer, title, content) VALUES(?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,article.getBoardId());
@@ -110,7 +95,6 @@ public class BoardDAO {
 	public int modifyArticle(ArticleVO article) {
 		int check = -1;
 		try {
-			conn = getConnection();
 			String sql = "UPDATE article SET boardId = ?, title = ?, content = ? WHERE articleId = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,article.getBoardId());
@@ -129,7 +113,6 @@ public class BoardDAO {
 	public int deleteArticle(ArticleVO article) {
 		int check = -1;
 		try {
-			conn = getConnection();
 			String sql = "DELETE FROM article WHERE articleId = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,article.getArticleId());
@@ -145,8 +128,6 @@ public class BoardDAO {
 	public ArticleVO getArticle(int articleId) {
 		ArticleVO article = new ArticleVO();
 		try {
-			conn = getConnection();
-
 			// 조회수 + 1
 			String sql = "UPDATE article SET hit = hit+1 WHERE articleId = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -180,8 +161,6 @@ public class BoardDAO {
 	public List<ArticleVO> getAllArticles(int boardId) {
 		List<ArticleVO> list = new ArrayList<>();
 		try {
-			conn = getConnection();
-
 			String sql = "SELECT * FROM articleInfo WHERE boardId = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardId);
@@ -210,8 +189,6 @@ public class BoardDAO {
 	public List<CommentVO> getComments(int articleId) {
 		List<CommentVO> list = new ArrayList<>();
 		try {
-			conn = getConnection();
-
 			String sql = "SELECT * FROM comment WHERE articleId = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, articleId);
@@ -236,8 +213,6 @@ public class BoardDAO {
 	public int writeComment(CommentVO comment) {
 		int check = -1;
 		try {
-			conn = getConnection();
-
 			String sql = "INSERT INTO comment(articleId, writer, content) VALUES (?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, comment.getArticleId());
