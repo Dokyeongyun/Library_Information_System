@@ -1,13 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%--
-<c:set var="resultListSize" value="${resultList.size()}"/>
-<c:set var="resultPerPage" value="10"/>
-<c:set var="currentPage" value="1"/>
-<c:set var="maxPage" value="${resultListSize / resultPerPage}"/>
-<c:set var="firstIndex" value="${resultPerPage * (currentPage-1) + 1}"/>
---%>
+<c:set var="bookNo" value="1"/>
 
 <div class="container">
     <div class="page_title_region">
@@ -82,26 +76,33 @@
             <div class="storageInfoContent">
                 <table>
                     <tr>
-                        <th>No</th>
-                        <th>등록번호</th>
-                        <th>청구기호</th>
+                        <th width="5%">No</th>
+                        <th width="10%">등록번호</th>
+                        <th width="20%">청구기호</th>
                         <th>소장처</th>
-                        <th>도서상태</th>
-                        <th>반납예정일</th>
-                        <th>예약</th>
-                        <th>예약정보</th>
+                        <th width="10%">도서상태</th>
+                        <th width="10%">반납예정일</th>
+                        <th width="10%">예약</th>
                     </tr>
                     <c:forEach var="i" items="${bookList}">
                         <tr>
-                            <td>No</td>
-                            <td>등록번호</td>
-                            <td>청구기호</td>
-                            <td>소장처</td>
-                            <td>도서상태</td>
-                            <td>반납예정일</td>
-                            <td>예약</td>
-                            <td>예약정보</td>
+                            <td>${bookNo}</td>
+                            <td>${i.bookId}</td>
+                            <td>${i.category}</td>
+                            <td>${i.storageLocation}</td>
+                            <c:if test="${i.bookStatus == '이용가능'}">
+                                <td class="bookStatusTd possible">${i.bookStatus}</td>
+                            </c:if>
+                            <c:if test="${i.bookStatus == '대출중'}">
+                                <td class="bookStatusTd rented">${i.bookStatus}</td>
+                            </c:if>
+                            <c:if test="${i.bookStatus == '분실도서'}">
+                                <td class="bookStatusTd impossible">${i.bookStatus}</td>
+                            </c:if>
+                            <td></td>
+                            <td>X</td>
                         </tr>
+                        <c:set var="bookNo" value="${bookNo+1}"/>
                     </c:forEach>
                 </table>
             </div>
