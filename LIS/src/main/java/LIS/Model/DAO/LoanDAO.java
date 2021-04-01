@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LoanDAO {
@@ -32,33 +33,95 @@ public class LoanDAO {
 	ResultSet rs = null;
 
 	// 도서 대출 (도서 상태 변경 + 대출 작업 수행 트랜잭션처리)
-	public int insertLoan(LoanVO loan) {
+	public int insertLoan(List<LoanVO> list) {
 		int check = -1;
+		int[] batchCheck;
 		try {
 			conn.setAutoCommit(false);
 
-			int updateStatus = BookDAO.getInstance().updateBookStatus(loan.getBookId(), "대출중");
+			int updateStatus = BookDAO.getInstance().updateBookStatus(list, "대출중");
 			if(updateStatus != 1){
 				check = -2;
 				throw new Exception("대출불가능 도서");
 			}
 
 			String sql = "INSERT INTO loan(loaner, bookId, loanDate, returnDeadline) VALUES(?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+
+			for(int i=0; i<list.size(); i++){
+				pstmt.setString(1, list.get(i).getLoaner());
+				pstmt.setInt(2, list.get(i).getBookId());
+				pstmt.setString(3, list.get(i).getLoanDate());
+				pstmt.setString(4, list.get(i).getReturnDeadline());
+				pstmt.addBatch();
+			}
+			batchCheck = pstmt.executeBatch();
+			for (int j : batchCheck) { if (j == 0) { throw new Exception("대출처리 실패"); } }
+			check = 1;
+			conn.commit();
+
+		} catch (Exception e) {
+			try{ conn.rollback(); }catch (Exception ignored){ }
+			e.printStackTrace();
+		} finally {
+			try { conn.setAutoCommit(true); } catch (Exception e2) { e2.printStackTrace(); }
+		}
+		return check;
+	}
+
+	// 도서 대출기한 연장
+	public int extendLoanPeriod(List<LoanVO> list) {
+		int check = -1;
+		int[] batchCheck;
+		try {
+			conn.setAutoCommit(false);
+			String sql = "UPDATE loan SET returnDeadline = DATE_ADD(returnDeadline, INTERVAL 7 DAY), isExtended = 1 WHERE loanId = ?;";
+			pstmt = conn.prepareStatement(sql);
+
+			for(int i=0; i<list.size(); i++){
+				pstmt.setInt(1, list.get(i).getLoanId());
+				pstmt.addBatch();
+			}
+			batchCheck = pstmt.executeBatch();
+			for (int j : batchCheck) { if (j == 0) { throw new Exception("연장처리 실패"); } }
+			check = 1;
+			conn.commit();
+
+		} catch (Exception e) {
+			try{ conn.rollback(); }catch (Exception ignored){ }
+			e.printStackTrace();
+		} finally {
+			try { conn.setAutoCommit(true); } catch (Exception e2) { e2.printStackTrace(); }
+		}
+		return check;
+	}
+
+	// 도서 반납 (도서 상태 변경 + 반납 작업 수행 트랜잭션처리)
+	public int returnBooks(List<LoanVO> list) {
+		int check = -1;
+		int[] batchCheck;
+		try {
+			conn.setAutoCommit(false);
+
+			int updateStatus = BookDAO.getInstance().updateBookStatus(list, "이용가능");
+			if(updateStatus != 1){
+				check = -2;
+				throw new Exception("반납 실패");
+			}
+
+			String sql = "UPDATE loan SET isReturn = 1, returnDate = ? WHERE loaner = ? AND bookId = ?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, loan.getLoaner());
-			pstmt.setInt(2, loan.getBookId());
-			pstmt.setString(3, loan.getLoanDate());
-			pstmt.setString(4, loan.getReturnDeadline());
-
-			check = pstmt.executeUpdate();
-
-			if(check == 1){
-				conn.commit();
-			}else{
-				check = -1;
-				throw new Exception("대출처리 실패");
+			for(int i=0; i<list.size(); i++){
+				pstmt.setString(1, list.get(i).getReturnDate());
+				pstmt.setString(2, list.get(i).getLoaner());
+				pstmt.setInt(3, list.get(i).getBookId());
+				pstmt.addBatch();
 			}
+			batchCheck = pstmt.executeBatch();
+			for (int j : batchCheck) { if (j == 0) { throw new Exception("대출처리 실패"); } }
+			check = 1;
+			conn.commit();
 		} catch (Exception e) {
 			try{ conn.rollback(); }catch (Exception ignored){ }
 			e.printStackTrace();

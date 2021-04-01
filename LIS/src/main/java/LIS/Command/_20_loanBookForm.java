@@ -4,7 +4,6 @@ import LIS.Controller.CommandAction;
 import LIS.Model.DAO.BookDAO;
 import LIS.Model.DAO.LoanDAO;
 import LIS.Model.VO.BookVO;
-import LIS.Model.VO.LoanBook;
 import LIS.Model.VO.LoanVO;
 import LIS.Model.VO.UserVO;
 
@@ -17,8 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class _22_ManageLoanInfo implements CommandAction {
-	LoanDAO loanDAO = LoanDAO.getInstance();
+public class _20_loanBookForm implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -29,11 +27,11 @@ public class _22_ManageLoanInfo implements CommandAction {
 			return "/06_login.jsp";
 		}
 
-		UserVO user = (UserVO) session.getAttribute("loginUser");
+		UserVO userVO = ((UserVO) session.getAttribute("loginUser"));
+		if(userVO.getIsManager() != 1){
+			return "/06_login.jsp";
+		}
 
-		List<LoanBook> list = loanDAO.getMyLoanBook(user);
-		request.setAttribute("loanBookList", list);
-
-		return "/25_manageMyLoanInfo.jsp";
+		return "/23_loanBookForm.jsp";
 	}
 }

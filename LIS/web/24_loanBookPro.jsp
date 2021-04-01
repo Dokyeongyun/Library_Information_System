@@ -3,8 +3,8 @@
 
 <c:if test="${result == 1}">
     <script>
-        var notice = '[${loanVO.loaner}]님의 [${loanVO.bookId}] 도서 대출작업이 성공적으로 수행되었습니다.\n'
-        +'대출 반납기한은 [${loanVO.returnDeadline}] 입니다.'
+        var notice = '[${loanList[0].loaner}]님의 도서 대출 [${loanList.size()}]건이 성공적으로 수행되었습니다.\n'
+        +'대출 반납기한은 [${loanList[0].returnDeadline}] 입니다.'
         alert(notice);
         location.href='/loanBookForm.do'
     </script>

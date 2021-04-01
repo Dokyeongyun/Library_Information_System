@@ -5,15 +5,15 @@
     <div class="page_title_region">
         <div style="overflow: hidden; margin-bottom: 20px;">
             <img src="/img/loanBook_icon.PNG" style="width: 50px; margin-top: 5px; float: left; margin-right: 10px;">
-            <h2 class="title_txt">대출 도서정보 입력</h2>
+            <h2 class="title_txt">반납 도서정보 입력</h2>
         </div>
         <div class="page_navigation">
             <a href="/main.do">Home</a> >
-            <a href="#">Loan</a>
+            <a href="#">Return</a>
         </div>
     </div>
     <div class="loanBookContent">
-        <form action="/loanBookPro.do" method="post">
+        <form action="/returnBookPro.do" method="post">
             <table>
                 <tr>
                     <th>도서 ID</th>
@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <th></th>
-                    <td><input type="submit" value="대출실행" style="width: 100%"></td>
+                    <td><input type="submit" value="반납실행" style="width: 100%"></td>
                 </tr>
             </table>
         </form>
@@ -33,7 +33,5 @@
 </div>
 <style>
     .loanBookContent{padding: 20px;}
-    .loanBookContent table th {
-        padding: 20px;
-    }
+    .loanBookContent table th {padding: 20px;}
 </style>

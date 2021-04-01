@@ -135,17 +135,24 @@ public class BookDAO {
 	}
 
 	// 도서상태 업데이트
-	public int updateBookStatus(int bookId, String status){
+	public int updateBookStatus(List<LoanVO> list, String status){
 		int check = -1;
+		int[] batchCheck;
+
 		try {
 			conn.setAutoCommit(false);
 			String sql = "UPDATE book SET bookStatus = ? WHERE bookId = ?";
-
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, status);
-			pstmt.setInt(2, bookId);
 
-			check = pstmt.executeUpdate();
+			for(int i=0; i<list.size(); i++){
+				pstmt.setString(1, status);
+				pstmt.setInt(2, list.get(i).getBookId());
+				pstmt.addBatch();
+			}
+			batchCheck = pstmt.executeBatch();
+			for (int j : batchCheck) { if (j == 0) { throw new Exception("도서 상태 업데이트 실패"); } }
+			check = 1;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

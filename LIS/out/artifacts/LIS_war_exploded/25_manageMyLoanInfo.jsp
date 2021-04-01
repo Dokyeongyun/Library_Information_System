@@ -56,10 +56,12 @@
                                 <p class="returnDeadlineBox_txt">반납일자</p>
                                 <p class="returnDeadlineBox">${i.loan.returnDeadline.substring(0,10)}</p>
                                 <c:if test="${i.loan.isExtended == 0}">
-                                    <p class="possible extendBox">연장하기</p>
+                                    <a href="/extendLoanPeriod.do?loanId=${i.loan.loanId}">
+                                        <p class="possible extendBox">연장하기</p>
+                                    </a>
                                 </c:if>
                                 <c:if test="${i.loan.isExtended != 0}">
-                                    <p class="impossible extendBox">연장하기</p>
+                                    <p class="impossible extendBox">연장불가</p>
                                 </c:if>
                             </dd>
 

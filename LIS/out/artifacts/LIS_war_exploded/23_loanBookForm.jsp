@@ -5,7 +5,7 @@
     <div class="page_title_region">
         <div style="overflow: hidden; margin-bottom: 20px;">
             <img src="/img/loanBook_icon.PNG" style="width: 50px; margin-top: 5px; float: left; margin-right: 10px;">
-            <h2 class="title_txt">도서 대출정보 입력</h2>
+            <h2 class="title_txt">대출 도서정보 입력</h2>
         </div>
         <div class="page_navigation">
             <a href="/main.do">Home</a> >
