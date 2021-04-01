@@ -115,10 +115,24 @@
 
         <!-- 도서 관련링크 -->
         <div class="CSH_relatedLink">
-            
+            <div class="relatedLinkHeader">
+                <h3>관련링크</h3>
+            </div>
+            <div class="relatedLinkContent">
+                <table>
+                    <tr><td><a href="https://book.naver.com/search/search.nhn?sm=sta_hty.book&query=${bookList[0].ISBN}">국내도서 책소개/목차 (Naver) > </a></td></tr>
+                    <tr><td><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?barcode=${bookList[0].ISBN}">국내도서 책소개/목차 (교보문고) > </a></td></tr>
+                    <tr><td><a href="https://www.amazon.com/s?k=${bookList[0].ISBN}&i=stripbooks&ref=nb_sb_ss_c_0_12">해외도서 책소개/목차 (Amazon) > </a></td></tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 <style>
-    .CSH_relatedLink{margin-bottom: 30px;}
+    .CSH_relatedLink{margin-bottom: 50px;}
+    .relatedLinkHeader {background: darkblue;}
+    .relatedLinkHeader h3 {font-weight: bold;color: #fff;font-size: 26px;padding: 10px 0 10px 20px;letter-spacing: -1px;}
+    .relatedLinkContent table {width: 100%;padding: 30px;border-top: 1px solid black;border-bottom: 1px solid black;}
+    .relatedLinkContent table td{padding: 10px;}
+    .relatedLinkContent table tr td a {font-size: 18px;font-weight: bold;color: #151757;}
 </style>

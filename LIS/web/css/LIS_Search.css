@@ -46,7 +46,7 @@ dl, dt, dd, ul {list-style: none;margin: 0;padding: 0;}
 .leftContent {float: left;width: 25%;height: 300px;padding: 20px;}
 .rightContent {float: left;width: 75%;padding: 30px;}
 .rightContent table th {text-align: right; padding: 10px;}
-.CSH_storageInfo{margin-bottom: 30px;}
+.CSH_storageInfo{margin-bottom: 50px;}
 .storageInfoHeader {background: darkblue;}
 .storageInfoHeader h3 {font-weight: bold;color: #fff;font-size: 26px;padding: 10px 0 10px 20px;letter-spacing: -1px;}
 .storageInfoContent table{padding: 20px;width: 100%;border-top: 1px solid black;border-bottom: 1px solid black;}

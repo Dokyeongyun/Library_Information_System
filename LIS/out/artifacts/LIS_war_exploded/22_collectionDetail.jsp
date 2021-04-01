@@ -18,11 +18,15 @@
     </div>
 
     <div class="CSH_detail_region">
+
+        <!-- 메뉴 -->
         <div class="CSH_result_menu">
             <button type="button"><img src="/img/shelf_icon.PNG" style="width: 15px; margin-right: 4px;" alt="내서재에 담기">내서재에 담기</button>
             <button type="button"><img src="/img/reservation_icon.PNG" style="width: 20px; margin-right: 4px;" alt="예약하기">예약하기</button>
         </div>
         <hr>
+
+        <!-- 도서 상세정보 -->
         <div class="CSH_profile">
             <div class="profileHeader">
                 <h3>${bookList[0].bookName}</h3>
@@ -69,6 +73,7 @@
             </div>
         </div>
 
+        <!-- 도서 소장정보 -->
         <div class="CSH_storageInfo">
             <div class="storageInfoHeader">
                 <h3>소장정보</h3>
@@ -107,5 +112,27 @@
                 </table>
             </div>
         </div>
+
+        <!-- 도서 관련링크 -->
+        <div class="CSH_relatedLink">
+            <div class="relatedLinkHeader">
+                <h3>관련링크</h3>
+            </div>
+            <div class="relatedLinkContent">
+                <table>
+                    <tr><td><a href="https://book.naver.com/search/search.nhn?sm=sta_hty.book&query=${bookList[0].ISBN}">국내도서 책소개/목차 (Naver) > </a></td></tr>
+                    <tr><td><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?barcode=${bookList[0].ISBN}">국내도서 책소개/목차 (교보문고) > </a></td></tr>
+                    <tr><td><a href="https://www.amazon.com/s?k=${bookList[0].ISBN}&i=stripbooks&ref=nb_sb_ss_c_0_12">해외도서 책소개/목차 (Amazon) > </a></td></tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+<style>
+    .CSH_relatedLink{margin-bottom: 50px;}
+    .relatedLinkHeader {background: darkblue;}
+    .relatedLinkHeader h3 {font-weight: bold;color: #fff;font-size: 26px;padding: 10px 0 10px 20px;letter-spacing: -1px;}
+    .relatedLinkContent table {width: 100%;padding: 30px;border-top: 1px solid black;border-bottom: 1px solid black;}
+    .relatedLinkContent table td{padding: 10px;}
+    .relatedLinkContent table tr td a {font-size: 18px;font-weight: bold;color: #151757;}
+</style>
