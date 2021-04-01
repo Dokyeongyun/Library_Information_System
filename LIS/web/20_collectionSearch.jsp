@@ -69,7 +69,7 @@
                 <hr>
                 <div class="limiter_menu">
                     <input type="submit" value="검색" title="검색">
-                    <a href="#" title="검색 History">검색 History</a>
+                    <a href="/collectionSearchHistory.do" title="검색 History">검색 History</a>
                     <input type="reset" value="다시쓰기" title="다시쓰기">
                 </div>
             </div>

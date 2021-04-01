@@ -265,12 +265,14 @@ public class BookDAO {
 				list.add(book);
 			}
 
-			String sql2 = "INSERT INTO searchhistory(sh_keyword, sh_user, sh_query) VALUES (?, ?, ?)";
+			String sql2 = "INSERT INTO searchhistory(sh_keyword, sh_keyword2, sh_user, sh_query, sh_resultSize) VALUES (?, ?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setString(1, sh.getSh_keyword());
-			pstmt.setString(2, sh.getSh_user());
-			pstmt.setString(3, sql);
+			pstmt.setString(2, bookSearchForm.toString());
+			pstmt.setString(3, sh.getSh_user());
+			pstmt.setString(4, sql);
+			pstmt.setInt(5, list.size());
 
 			pstmt.executeUpdate();
 
@@ -305,5 +307,35 @@ public class BookDAO {
 					.append(" AND publicationYear <= ").append(bookSearchForm.getPublicationYear2());
 		}
 		return query.toString();
+	}
+
+	// Query를 직접 이용한 도서 검색
+	public List<BookVO> searchBookUsingQuery(String query) {
+		List<BookVO> list = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				BookVO book = new BookVO();
+				book.setBookId(rs.getInt("bookId"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthors(rs.getString("authors"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublicationYear(rs.getInt("publicationYear"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setBookImageURL(rs.getString("bookImageURL"));
+				book.setVol(rs.getInt("vol"));
+				book.setCategory(rs.getString("category"));
+				book.setStorageLocation(rs.getString("storageLocation"));
+				book.setBookStatus(rs.getString("bookStatus"));
+				book.setRegDate(rs.getString("regDate"));
+				list.add(book);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

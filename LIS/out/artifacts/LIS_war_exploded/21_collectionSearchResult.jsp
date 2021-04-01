@@ -52,7 +52,12 @@
     </div>
 
     <div class="CSH_result_region">
-        <div style="height: 30px;">검색어: <strong>${searchInfo}</strong></div>
+        <c:if test="${usingQuery}">
+            <div style="height: 30px;">검색어: <strong>${shVO.sh_keyword2}</strong></div>
+        </c:if>
+        <c:if test="${!usingQuery}">
+            <div style="height: 30px;">검색어: <strong>${searchInfo}</strong></div>
+        </c:if>
         <div style="height: 30px;">검색 결과: <strong>총 ${resultListSize} 건</strong></div>
         <div style="height: 30px;" id="pageInfo"></div>
         <div style="height: 30px;">페이지당 출력개수: <strong>${resultPerPage}</strong> 건</div>

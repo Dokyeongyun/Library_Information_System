@@ -66,3 +66,9 @@ dl, dt, dd, ul {list-style: none;margin: 0;padding: 0;}
 .returnDeadlineBox_txt{width: 100px;position: absolute;bottom: 110px;right: 50px;text-align: left;color: black;}
 .returnDeadlineBox{width: 100px;position: absolute;bottom: 80px;right: 50px;text-align: center;color: black; background: #e6e6e6; border: 1px solid black; }
 .extendBox{width: 100px;position: absolute;bottom: 20px;right: 50px;text-align: center;color: white; border: 1px solid black; cursor: pointer;}
+
+/* 검색 History */
+.CSH_historyTable{width: 100%;border-bottom: 1px solid #e6e6e6;}
+.CSH_historyTable th {text-align: center;background: #e6e6e6;padding: 20px;}
+.CSH_historyTable td {text-align: center;padding: 20px;border-top: 1px solid #ddd;}
+.CSH_historyBtn {padding: 3px 50px;background: #0e1b5f;color: white;margin-top: 30px;font-weight: bold; border: none}

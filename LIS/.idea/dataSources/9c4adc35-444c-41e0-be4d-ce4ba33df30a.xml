@@ -1266,139 +1266,148 @@ SELECT|sys.sys_config
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="366" parent="306" name="sh_user">
+    <column id="366" parent="306" name="sh_keyword2">
       <Position>3</Position>
+      <DataType>varchar(500)|0s</DataType>
+    </column>
+    <column id="367" parent="306" name="sh_user">
+      <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="367" parent="306" name="sh_query">
-      <Position>4</Position>
+    <column id="368" parent="306" name="sh_query">
+      <Position>5</Position>
       <DataType>varchar(1000)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="368" parent="306" name="sh_date">
-      <Position>5</Position>
+    <column id="369" parent="306" name="sh_date">
+      <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <key id="369" parent="306" name="PRIMARY">
+    <column id="370" parent="306" name="sh_resultsize">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <key id="371" parent="306" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>sh_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="370" parent="307" name="userId">
+    <column id="372" parent="307" name="userId">
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="371" parent="307" name="password">
+    <column id="373" parent="307" name="password">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="372" parent="307" name="name">
+    <column id="374" parent="307" name="name">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="373" parent="307" name="stuNum">
+    <column id="375" parent="307" name="stuNum">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="374" parent="307" name="dept">
+    <column id="376" parent="307" name="dept">
       <Position>5</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="375" parent="307" name="userStatus">
+    <column id="377" parent="307" name="userStatus">
       <Position>6</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="376" parent="307" name="phone">
+    <column id="378" parent="307" name="phone">
       <Position>7</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="377" parent="307" name="email">
+    <column id="379" parent="307" name="email">
       <Position>8</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="378" parent="307" name="mileage">
+    <column id="380" parent="307" name="mileage">
       <Position>9</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="379" parent="307" name="isManager">
+    <column id="381" parent="307" name="isManager">
       <Position>10</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="380" parent="307" name="regDate">
+    <column id="382" parent="307" name="regDate">
       <Position>11</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <index id="381" parent="307" name="stuNum_UNIQUE">
+    <index id="383" parent="307" name="stuNum_UNIQUE">
       <ColNames>stuNum</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="382" parent="307" name="PRIMARY">
+    <key id="384" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userId</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="383" parent="307" name="stuNum_UNIQUE">
+    <key id="385" parent="307" name="stuNum_UNIQUE">
       <ColNames>stuNum</ColNames>
       <UnderlyingIndexName>stuNum_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="384" parent="308" name="articleId">
+    <column id="386" parent="308" name="articleId">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="385" parent="308" name="boardId">
+    <column id="387" parent="308" name="boardId">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="386" parent="308" name="writer">
+    <column id="388" parent="308" name="writer">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="387" parent="308" name="title">
+    <column id="389" parent="308" name="title">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="388" parent="308" name="content">
+    <column id="390" parent="308" name="content">
       <Position>5</Position>
       <DataType>varchar(1000)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="389" parent="308" name="hit">
+    <column id="391" parent="308" name="hit">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="390" parent="308" name="attachFile">
+    <column id="392" parent="308" name="attachFile">
       <Position>7</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="391" parent="308" name="regDate">
+    <column id="393" parent="308" name="regDate">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="392" parent="308" name="boardName">
+    <column id="394" parent="308" name="boardName">
       <Position>9</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>

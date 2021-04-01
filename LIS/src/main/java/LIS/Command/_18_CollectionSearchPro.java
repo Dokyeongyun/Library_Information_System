@@ -2,6 +2,7 @@ package LIS.Command;
 
 import LIS.Controller.CommandAction;
 import LIS.Model.DAO.BookDAO;
+import LIS.Model.DAO.SearchHistoryDAO;
 import LIS.Model.VO.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,18 @@ public class _18_CollectionSearchPro implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		// query 를 직접 이용해 검색하는 경우
+		if(request.getParameter("sh_id") != null){
+			int sh_id = Integer.parseInt(request.getParameter("sh_id"));
+			SearchHistoryVO shVO = SearchHistoryDAO.getInstance().getSearchHistoryById(sh_id);
+			List<BookVO> list = bookDAO.searchBookUsingQuery(shVO.getSh_query());
+			request.setAttribute("resultList", list);
+			request.setAttribute("usingQuery", true);
+			request.setAttribute("shVO", shVO);
+			return "/21_collectionSearchResult.jsp";
+		}
+
 		List<SearchFormPart> list = new ArrayList<>();
 		String[] search_type = request.getParameterValues("search_type");
 		String[] keyword = request.getParameterValues("keyword");
@@ -45,7 +58,7 @@ public class _18_CollectionSearchPro implements CommandAction {
 		// SearchHistoryVO
 		SearchHistoryVO sh = new SearchHistoryVO();
 		HttpSession session = request.getSession();
-		String userId = session.getId()+"_"+new Date().getTime();
+		String userId = session.getId();
 		if(session.getAttribute("loginUser") != null){
 			userId = ((UserVO) session.getAttribute("loginUser")).getUserId();
 		}
@@ -54,9 +67,8 @@ public class _18_CollectionSearchPro implements CommandAction {
 
 		List<BookVO> resultList = bookDAO.searchBook(bookSearchForm, sh);
 		request.setAttribute("resultList", resultList);
-
-		String searchInfo = bookSearchForm.toString();
-		request.setAttribute("searchInfo", searchInfo);
+		request.setAttribute("searchInfo", bookSearchForm.toString());
+		request.setAttribute("usingQuery", false);
 
 		System.out.println(bookSearchForm);
 		System.out.println(resultList);
