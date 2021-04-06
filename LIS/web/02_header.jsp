@@ -8,7 +8,7 @@
     <title>도서관정보시스템 LIS</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/LIS.css?ver=1">
+    <link rel="stylesheet" href="css/LIS.css?ver=2">
     <link rel="stylesheet" href="css/header_footer.css?ver=3">
     <link rel="stylesheet" href="css/register.css?ver=2">
     <link rel="stylesheet" href="css/LIS_Board.css?ver=3">
@@ -60,12 +60,13 @@
                         <ul class="nav-submenu">
                             <li><a class="nav-submenu-item" href="#">통합검색</a></li>
                             <li><a class="nav-submenu-item" href="/collectionSearch.do">소장자료</a></li>
+                            <li><a class="nav-submenu-item" href="/collectionSearchHistory.do">검색 HISTORY</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#">Collections</a>
                         <ul class="nav-submenu">
-                            <li><a class="nav-submenu-item" href="#">신착도서</a></li>
+                            <li><a class="nav-submenu-item" href="/newBooks.do">신착도서</a></li>
                             <li><a class="nav-submenu-item" href="#">추천100선</a></li>
                             <li><a class="nav-submenu-item" href="#">테마추천도서</a></li>
                             <li><a class="nav-submenu-item" href="#">베스트대출</a></li>
@@ -86,7 +87,6 @@
                         <ul class="nav-submenu">
                             <li><a class="nav-submenu-item" href="#">도서관소개</a></li>
                             <li><a class="nav-submenu-item" href="#">도서관통계</a></li>
-                            <li><a class="nav-submenu-item" href="#">HELP</a></li>
                         </ul>
                     </li>
                     <li>

@@ -50,7 +50,7 @@ body  { font-family: 'NanumBarunGothic', sans-serif; }
 .article_list_table thead tr {height: 60px;border-bottom: 2px solid #ddd;border-top: 2px solid #ddd;font-size: 14px;background: #e6e6e6;color: #727272;}
 .article_list_table tbody tr {height: 40px;border-bottom: 1px solid #ddd;}
 .article_list_table tbody tr td {padding: 14px 10px;font-size: 14px}
-.pagination_region {margin-top: 30px;width: 100%;text-align-last: center;background-color: #f9f9f8;padding: 16px 0 5px;}
+.pagination_region {margin-top: 30px;width: 100%;text-align-last: center;background-color: #f9f9f8;padding: 16px 0 16px;}
 .article_search_region {padding: 16px 0 16px;border-top: 1px solid #ebebea;background-color: #f9f9f8;text-align: center;}
 .article_title_tr {text-align-last: left;}
 .article_title_tr a {font-size: 14px;color: black;font-weight: bold;}
