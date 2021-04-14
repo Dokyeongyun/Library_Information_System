@@ -2,7 +2,6 @@ package LIS.Model.DAO;
 
 import LIS.Model.VO.*;
 import LIS.Utils.DatabaseConnection;
-import org.apache.poi.hssf.record.BookBoolRecord;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -12,7 +11,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -338,4 +336,36 @@ public class BookDAO {
 		}
 		return list;
 	}
+
+	// 신착도서 (최근 한달이내 입수된 도서) 목록 가져오기
+	public List<BookVO> getNewBookList(){
+		List<BookVO> list = new ArrayList<>();
+		try {
+			String sql = "SELECT * FROM book WHERE regDate > DATE_SUB(NOW(), INTERVAL 1 MONTH)";
+
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				BookVO book = new BookVO();
+				book.setBookId(rs.getInt("bookId"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthors(rs.getString("authors"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublicationYear(rs.getInt("publicationYear"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setBookImageURL(rs.getString("bookImageURL"));
+				book.setVol(rs.getInt("vol"));
+				book.setCategory(rs.getString("category"));
+				book.setStorageLocation(rs.getString("storageLocation"));
+				book.setBookStatus(rs.getString("bookStatus"));
+				book.setRegDate(rs.getString("regDate"));
+				list.add(book);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

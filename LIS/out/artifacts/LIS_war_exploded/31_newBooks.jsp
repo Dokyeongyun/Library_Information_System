@@ -47,7 +47,7 @@
         </form>
     </div>
     <div class="CSH_result_region">
-        <div style="height: 30px;">최근 한달 이내에 입수된 신착도서가 <strong>X</strong>권 있습니다.</div>
+        <div style="height: 30px;">최근 한달 이내에 입수된 신착도서가 <strong>${newBookList.size()}</strong>권 있습니다.</div>
         <hr>
         <div class="CSH_result_menu">
             <button type="button">전체선택</button>
@@ -56,12 +56,17 @@
         </div>
         <div class="CSH_result_gallery">
             <ul>
-                <c:forEach begin="1" end="10">
+                <c:forEach items="${newBookList}" var="i">
                     <li>
-                        <div><img src="/img/book_image_sample.PNG" width="100%"></div>
+                        <c:if test="${i.bookImageURL == ''}">
+                            <div><img src="/img/no_image_icon.PNG" width="100%" height="30%"></div>
+                        </c:if>
+                        <c:if test="${i.bookImageURL != ''}">
+                            <div><img src="/img/bookImage/${i.bookImageURL}" width="100%" height="30%"></div>
+                        </c:if>
                         <hr>
                         <div><input type="checkbox" name="checkedBook" style="margin-right: 10px;">선택</div>
-                        <div class="gallery_title_txt">책 이름일므이름일므이름일므일므이름일므이름일므일므이름일므이름일므일므이름일므이름일므이름일므이름이름</div>
+                        <div class="gallery_title_txt">${i.bookName}</div>
                     </li>
                 </c:forEach>
             </ul>
