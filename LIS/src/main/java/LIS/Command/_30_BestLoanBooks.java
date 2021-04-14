@@ -17,8 +17,8 @@ public class _30_BestLoanBooks implements CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 
-		List<BookVO> newBookList = bookDAO.getNewBookList();
-		request.setAttribute("newBookList", newBookList);
+		List<BookVO> bestLoanBookList = bookDAO.getBestLoanBookList();
+		request.setAttribute("bestLoanBookList", bestLoanBookList);
 
 		return "/32_bestLoanBooks.jsp";
 	}
