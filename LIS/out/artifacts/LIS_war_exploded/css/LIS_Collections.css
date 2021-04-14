@@ -1,0 +1,10 @@
+/* 신착도서 */
+.CSH_result_gallery ul{overflow: hidden;}
+.CSH_result_gallery ul li {float: left;margin: 10px;border: 1px solid #ddd;padding: 20px;width: 18%;}
+.gallery_title_txt {height: 40px;max-height: 50px;font-weight: bold;line-height: 20px;overflow: hidden;text-overflow: clip;}
+
+/* 베스트 대출 */
+.bestLoanRegion {padding: 20px;}
+.bestLoanTable {width: 100%;border-top: 1px solid black;border-bottom: 1px solid black;}
+.bestLoanTable tr th {background: #e6e6e6;padding: 20px;text-align: center;}
+.bestLoanTable tr td {text-align: center;padding: 14px 20px; border-top: 1px solid #ddd}

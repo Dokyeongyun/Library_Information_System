@@ -38,9 +38,13 @@
                         <input type="hidden" name="operator" value="AND">
                         <input type="hidden" name="publicationYear1" value="0">
                         <input type="hidden" name="publicationYear2" value="9999">
-                        <input type="text" name="keyword" class="CSH_input_box" style="flex: auto" placeholder="검색 키워드를 입력해주세요.">
-                        <input type="submit" class="CSH_input_box" style="background: #2F5597; color: white" value="검색"/>
-                        <button type="button" class="CSH_input_box" style="background: white; color: #2F5597" onclick="location.href='/collectionSearch.do'">상세검색</button>
+                        <input type="text" name="keyword" class="CSH_input_box" style="flex: auto"
+                               placeholder="검색 키워드를 입력해주세요.">
+                        <input type="submit" class="CSH_input_box" style="background: #2F5597; color: white"
+                               value="검색"/>
+                        <button type="button" class="CSH_input_box" style="background: white; color: #2F5597"
+                                onclick="location.href='/collectionSearch.do'">상세검색
+                        </button>
                     </div>
                 </div>
             </div>
@@ -51,22 +55,29 @@
         <hr>
         <div class="CSH_result_menu">
             <button type="button">전체선택</button>
-            <button type="button"><img src="/img/shelf_icon.PNG" style="width: 15px; margin-right: 4px;" alt="내서재에 담기">내서재에 담기</button>
-            <button type="button"><img src="/img/reservation_icon.PNG" style="width: 20px; margin-right: 4px;" alt="예약하기">예약하기</button>
+            <button type="button"><img src="/img/shelf_icon.PNG" style="width: 15px; margin-right: 4px;" alt="내서재에 담기">내서재에
+                담기
+            </button>
+            <button type="button"><img src="/img/reservation_icon.PNG" style="width: 20px; margin-right: 4px;"
+                                       alt="예약하기">예약하기
+            </button>
         </div>
         <div class="CSH_result_gallery">
             <ul>
                 <c:forEach items="${newBookList}" var="i">
                     <li>
-                        <c:if test="${i.bookImageURL == ''}">
-                            <div><img src="/img/no_image_icon.PNG" width="100%" height="30%"></div>
-                        </c:if>
-                        <c:if test="${i.bookImageURL != ''}">
-                            <div><img src="/img/bookImage/${i.bookImageURL}" width="100%" height="30%"></div>
-                        </c:if>
+                        <a href="/collectionDetail.do?ISBN=${i.ISBN}">
+                            <c:if test="${i.bookImageURL == ''}">
+                                <div><img src="/img/no_image_icon.PNG" width="100%" height="30%"></div>
+                            </c:if>
+                            <c:if test="${i.bookImageURL != ''}">
+                                <div><img src="/img/bookImage/${i.bookImageURL}" width="100%" height="30%"></div>
+                            </c:if>
+                        </a>
                         <hr>
                         <div><input type="checkbox" name="checkedBook" style="margin-right: 10px;">선택</div>
-                        <div class="gallery_title_txt">${i.bookName}</div>
+                        <div class="gallery_title_txt" style="cursor:pointer;"
+                             onclick="location.href='/collectionDetail.do?ISBN=${i.ISBN}'">${i.bookName}</div>
                     </li>
                 </c:forEach>
             </ul>
@@ -83,26 +94,4 @@
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
     </div>
-
 </div>
-
-<style>
-    .CSH_result_gallery ul{
-        overflow: hidden;
-    }
-    .CSH_result_gallery ul li {
-        float: left;
-        margin: 10px;
-        border: 1px solid #ddd;
-        padding: 20px;
-        width: 18%;
-    }
-    .gallery_title_txt {
-        height: 40px;
-        max-height: 50px;
-        font-weight: bold;
-        line-height: 20px;
-        overflow: hidden;
-        text-overflow: clip;
-    }
-</style>

@@ -48,6 +48,7 @@ public class Controller extends HttpServlet {
 		commandMap.put("/exportLoanHistory.do", new _27_ExportLoanHistory());
 		commandMap.put("/collectionSearchHistory.do", new _28_CollectionSearchHistory());
 		commandMap.put("/newBooks.do", new _29_NewBooks());
+		commandMap.put("/bestLoanBooks.do", new _30_BestLoanBooks());
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
